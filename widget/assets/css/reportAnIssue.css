@@ -28,5 +28,26 @@
     height: calc(100vh - 30px);
     overflow-y: auto;
   }
+
+  .styled-list {
+    font-size: 12px;
+    color: #D2D5DA;
+    width: 90%;
+    list-style-type: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+  }
   
+  .styled-list li {
+    padding-left: 20px; /* Add padding for indentation */
+    margin-bottom: 10px; /* Add margin between list items */
+  }
+  
+  .styled-list li:before {
+    content: "\2022"; /* Unicode character for bullet (•) */
+    color: #169CAD; /* Change bullet color */
+    font-size: 12px; /* Adjust bullet size if necessary */
+    display: inline-block;
+    width: 1em; /* Adjust spacing between bullet and text */
+    margin-left: -1em; /* Adjust to align bullet properly */
+  }
   

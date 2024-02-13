@@ -35,6 +35,8 @@ Copyright end */
     // $scope.getMdInstance = getMdInstance;
 
     $scope.uploadFiles = uploadFiles;
+    $scope.nextPage = true;
+
 
     $scope.uploadedFileFlag = null;
     $scope.submit = submit;
