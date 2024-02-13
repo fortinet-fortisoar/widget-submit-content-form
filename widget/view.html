@@ -1,12 +1,11 @@
 <!-- Copyright start
-  Copyright (C) 2008 - 2023 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end -->
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end -->
 
 <script src="communitySubmission-1.0.0/assets/service/communitySubmission.service.js"></script>
 
-<div class="widget widget-container chart" style="background-color:#1A202A">
+<div class="widget-container chart" style="background-color:#1A202A">
   <form data-ng-show="!nextPage" data-ng-submit="submit()" name="communitySubmissionForm"
     data-ng-class="{'state-wait': processing }" class="community-form-overflow">
     <div id="report-header" class="display-inline-flex margin-0 width-100pt padding-md"
@@ -161,21 +160,36 @@
     </div>
   </form>
   <div id="Thank You Image" data-ng-if="nextPage"">
-    <img class=" position-relative top-25" style="left:150px"
+    <img style="height:280px"
     src=" widgets/installed/communitySubmission-1.0.0/images/Thankyou.svg" alt="Bot">
 
-    <div style="top:150px; position:relative; left:25px;">
-      Submission Details
-      <div style="color: #A3AAB7;">
-        Name: {{user.fullName}}
+    <div style="position:relative; left:25px;">
+      Next Steps
+      <p style=" color: #D2D5DA; width: 90%; display: block; font-size: 12px;" class="margin-top-md">
+        To ensure a smooth process and honour your valuable contribution to the FortiSOAR community, we've outlined the steps that will be taken once you submit the .tgz file:
+      </p>
+      <ui style="font-size: 12px;color: #D2D5DA; width: 90%; display: block;">
+        <li>
+          Upon submission of the .tgz file, you will receive an email containing the Git repository details.
+        </li>
         <br>
-        Email Id: {{user.emailId}}
+        <li>
+          If you're familiar with Git, you have the option to fork the repository and submit your contribution. Alternatively, if Git is not within your comfort zone, we will proceed to submit the code on your behalf.
+        </li>
         <br>
-        Solution Title: {{user.solutionTitle}}
+        <li>
+          After the Pull Request (PR) is raised, our team will diligently review it within a period of 2 weeks.
+        </li>
         <br>
-        Solution Details: {{solutionDetails}}
-        <br>
-      </div>
+        <li>
+          Upon successful merging of the PR, the connector will be officially available on the FortiSOAR Content Hub. Please note that this process may take approximately 2 weeks.
+          <br>
+          Please note if you only submit the .tgz file, our team will take care of uploading the code to Git and facilitating its release on the FortiSOAR Content Hub.
+        </li>
+        <li>
+          Congratulations! You will be notified by email once the connector is officially released.
+        </li>
+      </ui>
 
       <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2"
         data-ng-disabled="playbookTriggered" data-ng-click="cancel()"><i

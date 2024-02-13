@@ -1,5 +1,8 @@
+/* Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end */
 'use strict';
-
 (function () {
     angular
         .module('cybersponse')
