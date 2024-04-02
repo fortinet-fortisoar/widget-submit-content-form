@@ -8,9 +8,9 @@ Copyright end */
         .module('cybersponse')
         .factory('communitySubmissionService', communitySubmissionService);
 
-    communitySubmissionService.$inject = ['Upload', 'API', 'toaster', 'playbookService', '$timeout', '$http', '$q', 'ALL_RECORDS_SIZE', 'MARKETPLACE', 'connectorService', 'marketplaceService', 'Modules', '$interval'];
+    communitySubmissionService.$inject = ['Upload', 'API', 'toaster', 'playbookService', '$timeout', '$http', '$q', 'ALL_RECORDS_SIZE', 'MARKETPLACE', 'connectorService', 'marketplaceService', 'Modules', '$interval', '$resource'];
 
-    function communitySubmissionService(Upload, API, toaster, playbookService, $timeout, $http, $q, ALL_RECORDS_SIZE, MARKETPLACE, connectorService, marketplaceService, Modules, $interval) {
+    function communitySubmissionService(Upload, API, toaster, playbookService, $timeout, $http, $q, ALL_RECORDS_SIZE, MARKETPLACE, connectorService, marketplaceService, Modules, $interval, $resource) {
 
         var service = {
             exportSolution: exportSolution,
@@ -84,12 +84,28 @@ Copyright end */
             scope.user = {
                 organizationName: ''
             };
-            scope.solutionDetails = '\nName: \nApi Indentifier: \nVersion: \nFSR Version:    \nBrief Description: \nDocuments Included: \nDescription:';
+            scope.solutionDetails = '\nName: \nApi Identifier: \nVersion: \nFSR Version:    \nBrief Description: \nDocuments Included: \nDescription:';
             scope.user = {
                 solutionTitle: ''
             };
             scope.selectedCategory = '';
             scope.uploadedFileFlag = null;
+        }
+
+        function getAllPlaybooks(queryObject) {
+            var defer = $q.defer();
+            var url = 'api/query/workflows';
+            $resource(url).save(queryObject, function (response) {
+                if (response['hydra:member'] && (response['hydra:member'][0])) {
+                    defer.resolve(response['hydra:member'][0]['uuid']);
+                }
+                else {
+                    defer.reject("Playbook Not Found");
+                }
+            }, function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
         }
 
         function triggerPlaybook(scope) {
@@ -103,39 +119,78 @@ Copyright end */
             queryPayload.request.data['organizationName'] = scope.user.organizationName;
             queryPayload.request.data['solutionTitle'] = scope.user.solutionTitle;
             queryPayload.request.data['solutionDetails'] = scope.solutionDetails;
-            var queryUrl = '/api/triggers/1/notrigger/beb68f0b-2aed-4e24-ae25-c5e24d40fb03?force_debug=true';
-            $http.post(queryUrl, queryPayload).then(function (result) {
-                scope.playbookTriggered = true;
-                if (result && result.data && result.data.task_id) {
-                    playbookService.checkPlaybookExecutionCompletion([result.data.task_id], function (response) {
-                        if (response && (response.status === 'finished' || response.status === 'failed')) {
-                            playbookService.getExecutedPlaybookLogData(response.instance_ids).then(function (res) {
-                                if (res.result.status === 'Success') {
-                                    scope.playbookTriggered = false;
-                                    scope.nextPage = true;
-                                    defer.resolve({
-                                        result: res.result,
-                                        status: response.status
-                                    });
-                                }
-                                else {
+            var defer = $q.defer();
+            var queryObjectPlaybook = {
+                'sort': [
+                    {
+                        'field': 'createDate',
+                        'direction': 'DESC',
+                        '_fieldName': 'createDate'
+                    }
+                ],
+                'limit': 1,
+                'logic': 'AND',
+                'filters': [
+                    {
+                        'field': 'recordTags',
+                        'value': ['community-submission-send-mail'],
+                        'display': '',
+                        'operator': 'in',
+                        'type': 'array'
+                    },
+                    {
+                        'field': 'isActive',
+                        'value': true,
+                        'operator': 'eq'
+                    }
+                ],
+                '__selectFields': [
+                    'id',
+                    'name'
+                ]
+            };
+
+            // add a tag to the playbook, get the playbook instead of hardcoding the playbook iri
+            getAllPlaybooks(queryObjectPlaybook).then(function (playbookUUID) {
+                var queryUrl = '/api/triggers/1/notrigger/' + playbookUUID + '?force_debug=true';
+                $http.post(queryUrl, queryPayload).then(function (result) {
+                    scope.playbookTriggered = true;
+                    if (result && result.data && result.data.task_id) {
+                        playbookService.checkPlaybookExecutionCompletion([result.data.task_id], function (response) {
+                            if (response && (response.status === 'finished' || response.status === 'failed')) {
+                                playbookService.getExecutedPlaybookLogData(response.instance_ids).then(function (res) {
+                                    if (res.result.status === 'Success') {
+                                        scope.playbookTriggered = false;
+                                        scope.nextPage = true;
+                                        defer.resolve({
+                                            result: res.result,
+                                            status: response.status
+                                        });
+                                    }
+                                    else {
+                                        toaster.error({ body: 'Playbook failed please try again' });
+                                        scope.nextPage = false;
+                                        defer.reject('Playbook failed');
+                                    }
+                                }, function (err) {
                                     toaster.error({ body: 'Playbook failed please try again' });
-                                    scope.nextPage = false;
-                                    defer.reject('Playbook failed');
-                                }
-                            }, function (err) {
-                                toaster.error({ body: 'Playbook failed please try again' });
-                                defer.reject(err);
-                                scope.playbookError = true;
-                            });
-                        }
-                    }, function (error) {
-                        toaster.error({ body: 'Playbook failed please try again' });
-                        defer.reject(error);
-                        scope.playbookError = true;
-                    }, scope);
-                }
+                                    defer.reject(err);
+                                    scope.playbookError = true;
+                                });
+                            }
+                        }, function (error) {
+                            toaster.error({ body: 'Playbook failed please try again' });
+                            defer.reject(error);
+                            scope.playbookError = true;
+                        }, scope);
+                    }
+                }, function (err) {
+                    toaster.error({ body: 'Playbook error' });
+                    defer.reject(err);
+                });
             }, function (err) {
+                toaster.error({ body: 'Playbook error' });
+
                 defer.reject(err);
             });
         }
@@ -193,7 +248,7 @@ Copyright end */
                 _exportWidget(contentDetail, scope);
             } else if (contentDetail.type === MARKETPLACE.CONTENT_TYPE.SOLUTION_PACK) {
                 marketplaceService.exportContent(contentDetail).then(function (response) {
-                    _openExportWizard(response.jobUuid, true).then(function(file){
+                    _openExportWizard(response.jobUuid, true).then(function (file) {
                         scope.fileIRI = file['@id'];
                         triggerPlaybook(scope);
                     });

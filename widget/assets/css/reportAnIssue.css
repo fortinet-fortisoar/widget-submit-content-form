@@ -1,53 +1,77 @@
-.picklist-select-product{
-    background: #f0f8ff00;
-    height: 32px;
-    position: absolute;
-    right: 24px;
-    border-radius: 4px;
+.picklist-select-product {
+  background: #f0f8ff00;
+  height: 32px;
+  position: absolute;
+  right: 24px;
+  border-radius: 4px;
 }
 
 
-.bot-help-icon {
-    position: absolute;
-    display: flex;
-    margin-top: 18px;
-    right: 17px;
-  }
-  
-  .bot-help-icon p {
-    text-align: center;
-    width: 26px;
-    font-size: 18px;
-    height: 26px;
-    border: 1px solid;
-    border-radius: 50%;
-    color: white;
-  }
+.submit-button-style {
+  padding-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 55px;
+}
 
-  .community-form-overflow{
-    height: calc(100vh - 30px);
-    overflow-y: auto;
-  }
+.communitySubmission-help-icon p {
+  text-align: center;
+  width: 26px;
+  font-size: 18px;
+  height: 26px;
+  border: 1px solid;
+  border-radius: 50%;
+  color: white;
+}
 
-  .styled-list {
-    font-size: 12px;
-    color: #D2D5DA;
-    width: 90%;
-    list-style-type: none; /* Remove default bullets */
-    padding: 0; /* Remove default padding */
-  }
-  
-  .styled-list li {
-    padding-left: 20px; /* Add padding for indentation */
-    margin-bottom: 10px; /* Add margin between list items */
-  }
-  
-  .styled-list li:before {
-    content: "\2022"; /* Unicode character for bullet (•) */
-    color: #169CAD; /* Change bullet color */
-    font-size: 12px; /* Adjust bullet size if necessary */
-    display: inline-block;
-    width: 1em; /* Adjust spacing between bullet and text */
-    margin-left: -1em; /* Adjust to align bullet properly */
-  }
-  
+.disclaimer-position{
+  padding-right: 20px;
+  padding-left: 15px;
+  position: absolute;
+}
+
+.disclaimer-text{
+  background: #29323e;
+  font-size: 14px;
+  padding-left: 16px;
+  bottom: 48px;
+  border-left: 2px solid yellow;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.community-form-overflow {
+  height: 820px;
+  overflow-y: auto;
+}
+
+.styled-list {
+  font-size: 12px;
+  color: #D2D5DA;
+  width: 90%;
+  list-style-type: none;
+  /* Remove default bullets */
+  padding: 0;
+  /* Remove default padding */
+}
+
+.styled-list li {
+  padding-left: 20px;
+  /* Add padding for indentation */
+  margin-bottom: 10px;
+  /* Add margin between list items */
+}
+
+.styled-list li:before {
+  content: "\2022";
+  /* Unicode character for bullet (•) */
+  color: #169CAD;
+  /* Change bullet color */
+  font-size: 12px;
+  /* Adjust bullet size if necessary */
+  display: inline-block;
+  width: 1em;
+  /* Adjust spacing between bullet and text */
+  margin-left: -1em;
+  /* Adjust to align bullet properly */
+}

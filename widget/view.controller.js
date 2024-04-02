@@ -21,7 +21,7 @@ Copyright end */
     $scope.user = {
       organizationName: ''
     };
-    $scope.solutionDetails = '\nApi Identifier: \nVersion: \nFSR Version:    \nDocuments Included: Yes/No \nDescription:';
+    $scope.solutionDetails = 'Description:  \nDocuments Included: Yes/No ';
     $scope.user = {
       solutionTitle: ''
     };
@@ -32,17 +32,22 @@ Copyright end */
       selectedSolution: ''
     }
     $scope.selectedCategoryChanged = selectedCategoryChanged;
-    // $scope.getMdInstance = getMdInstance;
-
     $scope.uploadFiles = uploadFiles;
-    $scope.nextPage = true;
-
-
+    $scope.selectionChanged = selectionChanged;
+    $scope.fileName = '';
     $scope.uploadedFileFlag = null;
     $scope.submit = submit;
-    // var mdEditorInstance;
-    // var template = 'Name:Api Indentifier:Version:FSR Version:Brief Description:Documents Included:Description'
     $scope.cancel = cancel;
+    $scope.markdownConfig = {
+      initialEditType: 'markdown', //wysiwyg/markdown
+      previewStyle: 'tab',  //'vertical'
+      height: '250px',
+      usageStatistics: false,
+      hideModeSwitch: true,
+      toolbarItems: ['heading', 'bold', 'italic', 'strike', 'hr', 'divider', 'quote', 'ul', 'ol', 'indent',
+        'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'
+      ]
+    };
 
 
     init();
@@ -54,9 +59,10 @@ Copyright end */
       // markdownEditorService.insertContent(mdEditorInstance, template);
     }
 
-    // function getMdInstance(instance) {
-    //   mdEditorInstance = instance;
-    // }
+    function selectionChanged(){
+      $scope.solutionDetails = 'Description:  \nDocuments Included: Yes/No ';
+
+    }
 
     function selectedCategoryChanged(category){
       $scope.selectedCategory.name = category.name;
@@ -64,6 +70,8 @@ Copyright end */
 
     function uploadFiles(file) {
       // Filter out folders from the selected files
+      $scope.playbookTriggered = true;
+
       if (file.size < 25072682) {
         if (file.type) {
           file.upload = Upload.upload({
@@ -75,15 +83,16 @@ Copyright end */
           $scope.loadingJob = true;
           file.upload.then(function (response) {
             $scope.fileIRI = response.data;
+            $scope.fileName = response.data.filename;
             $scope.loadingJob = false;
             $scope.uploadedFileFlag = true;
-            if ($scope.showCreatedSolutions) {
+            $scope.playbookTriggered = false;
+            if (!$scope.showCreatedSolutions) {
               communitySubmissionService.triggerPlaybook($scope);
             }
           },
             function (response) {
               $scope.loadingJob = false;
-
               if (response.status > 0) {
                 $log.debug(response.status + ': ' + response.data);
               }
@@ -91,24 +100,23 @@ Copyright end */
               if (response.status === 413) {
                 message = 'File exceeds the maximum size.';
               }
+              $scope.playbookTriggered = false;
               toaster.error({ body: message });
             });
         }
       }
       else {
+        $scope.playbookTriggered = false;
+
         toaster.error({ body: 'File size exceeded limit, please try again' });
       }
     }
 
     function cancel() {
-      $scope.playbookTriggered = false;
-      $scope.uploadedFile = null;
-      $scope.user = {
-        fullName: ''
-      };
-      $scope.user = {
-        emailId: ''
-      };
+      delete $scope.playbookTriggered;
+      delete $scope.uploadedFile;
+      delete $scope.user.fullName 
+      delete $scope.user.emailId;
       $scope.user = {
         organizationName: ''
       };
@@ -129,7 +137,7 @@ Copyright end */
         $scope.communitySubmissionForm.$focusOnFirstError();
         return;
       }
-      if ($scope.showCreatedSolutions) {
+      if (!$scope.showCreatedSolutions) {
         communitySubmissionService.exportSolution($scope.selectedSolution.selectedSolution, $scope);
       }
       else {
