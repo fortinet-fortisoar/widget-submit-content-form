@@ -15,9 +15,21 @@ Copyright end */
         var service = {
             exportSolution: exportSolution,
             getInstalledContent: getInstalledContent,
-            triggerPlaybook: triggerPlaybook
+            triggerPlaybook: triggerPlaybook,
+            deleteFile: deleteFile
         }
         return service;
+
+        function deleteFile(uuid) {
+            var defer = $q.defer();
+
+            $http.delete(API.BASE + 'files/' + uuid).then(function (response) {
+                defer.resolve(response);
+            }, function (error) {
+                defer.reject(error);
+            });
+            return defer.promise;
+        }
 
         function uploadFiles(file, scope) {
             // Filter out folders from the selected files
@@ -31,12 +43,10 @@ Copyright end */
                     });
                     scope.loadingJob = true;
                     file.upload.then(function (response) {
-                        scope.fileIRI = response.data;
+                        scope.fileMetadata = response.data;
                         scope.loadingJob = false;
                         scope.uploadedFileFlag = true;
-                        if (scope.showCreatedSolutions) {
-                            triggerPlaybook(scope);
-                        }
+                        triggerPlaybook(scope);
                     },
                         function (response) {
                             scope.loadingJob = false;
@@ -71,27 +81,6 @@ Copyright end */
             };
         }
 
-        function deleteScope(scope) {
-            scope.playbookTriggered = false;
-            scope.uploadedFile = null;
-            scope.selectedSolution = { selectedSolution: '' };
-            scope.user = {
-                fullName: ''
-            };
-            scope.user = {
-                emailId: ''
-            };
-            scope.user = {
-                organizationName: ''
-            };
-            scope.solutionDetails = '\nName: \nApi Identifier: \nVersion: \nFSR Version:    \nBrief Description: \nDocuments Included: \nDescription:';
-            scope.user = {
-                solutionTitle: ''
-            };
-            scope.selectedCategory = '';
-            scope.uploadedFileFlag = null;
-        }
-
         function getAllPlaybooks(queryObject) {
             var defer = $q.defer();
             var url = 'api/query/workflows';
@@ -109,9 +98,10 @@ Copyright end */
         }
 
         function triggerPlaybook(scope) {
+            scrollToBottom();
             var queryPayload = returnParameters();
-            if (scope.fileIRI && scope.fileIRI['@id']) {
-                queryPayload.request.data['fileIRI'] = scope.fileIRI['@id'];
+            if (scope.fileMetadata && scope.fileMetadata['@id']) {
+                queryPayload.request.data['fileIRI'] = scope.fileMetadata['@id'];
             }
             queryPayload.request.data['userName'] = scope.user.fullName;
             queryPayload.request.data['category'] = scope.selectedCategory.name;
@@ -154,13 +144,16 @@ Copyright end */
             getAllPlaybooks(queryObjectPlaybook).then(function (playbookUUID) {
                 var queryUrl = '/api/triggers/1/notrigger/' + playbookUUID + '?force_debug=true';
                 $http.post(queryUrl, queryPayload).then(function (result) {
-                    scope.playbookTriggered = true;
+                    scope.submitFormFlag = true;
                     if (result && result.data && result.data.task_id) {
                         playbookService.checkPlaybookExecutionCompletion([result.data.task_id], function (response) {
                             if (response && (response.status === 'finished' || response.status === 'failed')) {
                                 playbookService.getExecutedPlaybookLogData(response.instance_ids).then(function (res) {
                                     if (res.result.status === 'Success') {
-                                        scope.playbookTriggered = false;
+                                        if (scope.fileMetadata && scope.fileMetadata['id']) {
+                                            deleteFile(scope.fileMetadata['id']);
+                                        }
+                                        scope.submitFormFlag = false;
                                         scope.nextPage = true;
                                         defer.resolve({
                                             result: res.result,
@@ -209,6 +202,11 @@ Copyright end */
             return defer.promise;
         }
 
+        function scrollToBottom() {
+            var container = document.getElementById('community-details-form');
+            container.scrollTop = container.scrollHeight;
+        }
+
         function queryToGetInstalledContent() {
             return {
                 "sort": [
@@ -241,6 +239,7 @@ Copyright end */
         }
 
         function exportSolution(contentDetail, scope) {
+            scrollToBottom();
             scope.user.solutionTitle = contentDetail.label;
             if (contentDetail.type === MARKETPLACE.CONTENT_TYPE.CONNECTOR) {
                 _exportConnector(contentDetail.recordId, scope);
@@ -249,7 +248,7 @@ Copyright end */
             } else if (contentDetail.type === MARKETPLACE.CONTENT_TYPE.SOLUTION_PACK) {
                 marketplaceService.exportContent(contentDetail).then(function (response) {
                     _openExportWizard(response.jobUuid, true).then(function (file) {
-                        scope.fileIRI = file['@id'];
+                        scope.fileMetadata = file['@id'];
                         triggerPlaybook(scope);
                     });
                 }, function () {

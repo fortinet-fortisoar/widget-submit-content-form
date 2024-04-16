@@ -11,7 +11,9 @@
   padding-right: 20px;
   display: flex;
   justify-content: flex-end;
-  padding-top: 55px;
+  box-shadow: 0px -1px 8px 1px rgba(0, 0, 0, .8);
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .communitySubmission-help-icon p {
@@ -24,17 +26,21 @@
   color: white;
 }
 
-.disclaimer-position{
+.disclaimer-position {
   padding-right: 20px;
   padding-left: 15px;
-  position: absolute;
 }
 
-.disclaimer-text{
+.disclaimer-symbol {
+  padding-top: 8px;
+  margin-left: -10px;
+  padding-right: 10px;
+}
+
+.disclaimer-text {
   background: #29323e;
   font-size: 14px;
   padding-left: 16px;
-  bottom: 48px;
   border-left: 2px solid yellow;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -43,6 +49,12 @@
 .community-form-overflow {
   height: 820px;
   overflow-y: auto;
+}
+
+.next-page-close {
+  position: fixed;
+  bottom: 8px;
+  right: 13px;
 }
 
 .styled-list {
@@ -74,4 +86,19 @@
   /* Adjust spacing between bullet and text */
   margin-left: -1em;
   /* Adjust to align bullet properly */
+}
+
+.custom-loader{
+  background: #7fffd400;
+  margin: 0px;
+  width: 29px;
+}
+
+.custom-cs-spinner {
+  height: 19px;
+  width: 19px;
+  animation: spinner 0.8s infinite linear;
+  border: 3px solid #e9e9e9;
+  border-right-color: transparent;
+  border-radius: 50%;
 }

@@ -6,7 +6,7 @@ Copyright end -->
 <script src="communitySubmission-1.0.0/assets/service/communitySubmission.service.js"></script>
 
 <div class="widget-container chart" style="background-color:#1A202A">
-  <div id="report-header" class="display-flex-space-between margin-0 width-100pt padding-md"
+  <div data-ng-show="!nextPage" id="report-header" class="display-flex-space-between margin-0 width-100pt padding-md"
     style="background-size: cover; background-color: #232C3C;">
     <div class="font-size-14" style=" margin: 5px;">
       <img src="widgets/installed/communitySubmission-1.0.0/images/Chat.svg"
@@ -16,216 +16,217 @@ Copyright end -->
     <div ng-click="openDocumentation()" class="communitySubmission-help-icon">
       <p style="margin-bottom: 0px;">?</p>
     </div>
+
   </div>
-  <form data-ng-show="!nextPage" data-ng-submit="submit()" name="communitySubmissionForm"
+  <form data-ng-show="!nextPage" data-ng-submit="submit()" id="community-details-form" name="communitySubmissionForm"
     data-ng-class="{'state-wait': processing }" class="community-form-overflow">
     <div id="body" class="margin-15">
       <div class="font-size-14">
         Submitter Details
       </div>
-      <div>
-        <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Name <span
-            class="text-danger">*</span></label>
-        <div
-          data-ng-class="{ 'has-error': communitySubmissionForm.fullName.$invalid && communitySubmissionForm.fullName.$touched }"
-          class="display-flex">
-          <input class="form-control" type="text" ng-model="user.fullName" name="fullName" required>
+      <div id="submitter details">
+        <div>
+          <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Name <span
+              class="text-danger">*</span></label>
+          <div
+            data-ng-class="{ 'has-error': communitySubmissionForm.fullName.$invalid && communitySubmissionForm.fullName.$touched }"
+            class="display-flex">
+            <input data-ng-disabled="submitFormFlag" class="form-control" type="text" ng-model="user.fullName" name="fullName" required>
+          </div>
+        </div>
+        <div>
+          <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Email-Id
+            <span class="text-danger">*</span>
+          </label>
+          <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress"
+            class="icon icon-information font-Size-13"></i>
+          <div
+            data-ng-class="{ 'has-error': communitySubmissionForm.email.$invalid && communitySubmissionForm.email.$touched }"
+            class="display-flex">
+            <input data-ng-disabled="submitFormFlag" class="form-control" type="email" id="emails" ng-model="user.emailId" name="email" required multiple>
+          </div>
+        </div>
+        <div>
+          <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Organization Name <span
+              class="text-danger">*</span></label>
+          <div
+            data-ng-class="{ 'has-error': communitySubmissionForm.organizationName.$invalid && communitySubmissionForm.organizationName.$touched }"
+            class="display-flex">
+            <input data-ng-disabled="submitFormFlag" class="form-control" type="text" ng-model="user.organizationName" name="organizationName" required>
+          </div>
         </div>
       </div>
-      <div>
-        <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Email-Id
-          <span class="text-danger">*</span>
-        </label>
-        <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress" 
-          class="icon icon-information font-Size-13"></i>
-        <div
-          data-ng-class="{ 'has-error': communitySubmissionForm.emails.$invalid && communitySubmissionForm.emails.$touched }"
-          class="display-flex">
-          <input class="form-control" type="email" id="emails" ng-model="user.emailId" name="email" required multiple>
-        </div>
-      </div>
-      <div>
-        <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Organization Name <span
-            class="text-danger">*</span></label>
-        <div
-          data-ng-class="{ 'has-error': communitySubmissionForm.organizationName.$invalid && communitySubmissionForm.organizationName.$touched }"
-          class="display-flex">
-          <input class="form-control" type="text" ng-model="user.organizationName" name="organizationName" required>
-        </div>
-      </div>
+
       <hr style="border-color: #47546A !important;">
 
       <div class="font-size-14">
         Solution Details
       </div>
-      <div id="solution-title">
-        <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Title <span
-            class="text-danger">*</span></label>
-        <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress" 
-        class="icon icon-information font-Size-13"></i>
-        <div
-          data-ng-class="{ 'has-error': communitySubmissionForm.solutionTitle.$invalid && communitySubmissionForm.solutionTitle.$touched }"
-          class="display-flex">
-          <input class="form-control" type="text" ng-model="user.solutionTitle" name="solutionTitle" required>
+      <div id="solution Details">
+        <div id="solution-title">
+          <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Title <span
+              class="text-danger">*</span></label>
+          <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress"
+            class="icon icon-information font-Size-13"></i>
+          <div data-ng-class="{ 'has-error': communitySubmissionForm.solutionTitle.$invalid && communitySubmissionForm.solutionTitle.$touched }"
+            class="display-flex">
+            <input data-ng-disabled="submitFormFlag" class="form-control" type="text" ng-model="user.solutionTitle" name="solutionTitle" required>
+          </div>
         </div>
-      </div>
-      <div id="selectCategory">
-        <label id="field-for-data-source" class="control-label font-size-12">Solution Category 
-        </label>
-        <span class="text-danger">*</span>
-        <select class="form-control" data-ng-options="content as content.name for content in category"
-          data-ng-model="selectedCategory" data-ng-change="selectedCategoryChanged(selectedCategory)" required>
-          <option value="">Select an Option</option>
-        </select>
-      </div>
-      <div id="solution-details">
-        <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Details <span
-            class="text-danger">*</span></label>
-        <div
-          data-ng-class="{ 'has-error': communitySubmissionForm.solutionDetails.$invalid && communitySubmissionForm.solutionDetails.$touched }"
-          class="display-flex">
-          <div data-cs-markdown-editor data-mode="'edit'" DATA-wait-for-load="250" style="width:100%"
-            data-ng-model="solutionDetails" data-config="markdownConfig" data-form-name="solutionDetails"></div>
-        </div>
-      </div>
-
-      <div>
-        <label class="padding-top-md">
-          <input type="checkbox" name="showCreatedSolutions" id="showCreatedSolutions"
-            data-ng-model="showCreatedSolutions" data-ng-change="selectionChanged()">
-        </label>
-        <label class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md margin-left-md">Upload Custom Solution </label>
-        <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress" 
-        class="icon icon-information font-Size-13"></i>
-      </div>
-
-      <div data-ng-if="!showCreatedSolutions">
-        <div id="installedSPorC">
-          <label id="field-for-data-source" class="control-label">Select Solution
-            <span class="text-danger">*</span>
+        <div id="selectCategory"
+          data-ng-class="{ 'has-error': communitySubmissionForm.solutionCategory.$invalid && communitySubmissionForm.solutionCategory.$touched }">
+          <label id="field-for-data-source" class="control-label font-size-12">Solution Category
           </label>
-          <select class="form-control"
-            data-ng-options="content as (content.label + ' - ' + content.version) for content in createdContent"
-            data-ng-model="selectedSolution.selectedSolution" required>
+          <span class="text-danger">*</span>
+          <select name="solutionCategory" id="solutionCategory" class="form-control" data-ng-disabled="submitFormFlag"
+            data-ng-model="selectedCategory.name" data-ng-change="selectedCategoryChanged()" required>
             <option value="">Select an Option</option>
+            <option ng-repeat="content in category" value="{{content.name}}">{{content.name}}</option>
           </select>
-        </div>
-      </div>
 
-      <div id="upload-a-file" class="margin-top-md" data-ng-show="!loadingJob && showCreatedSolutions">
-        <div data-ng-show="selectedCategory.name === 'Widget' || selectedCategory.name === 'Connector'">
-          <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
-          </span>
-          <div class="file-upload margin-top-6" data-ng-model="uploadedFile" ngf-select="uploadFiles(uploadedFile)"
-            data-ngf-drop="uploadFiles(uploadedFile)" data-ng-show="!uploadedFileFlag" data-accept=".tgz"
-            data-ngf-pattern="'.zip,.tgz,.json'">
-            <h2 class="margin-0">
-              <span class="padding-right-sm fa fa-folder-open"></span>
-            </h2>
-            <h5 class="margin-top-sm margin-bottom-0 padding-0" style="background-color: unset; text-align: center;">
-              Drop a tgz</h5>
-            <div>or click to use standard uploader</div>
-            <div>(File Size should not exceed 25MB)</div>
-          </div>
-          <button type="button" data-ng-show="uploadedFileFlag"
-            class="icon icon-edit btn btn-link margin-top-sm center-block" data-ng-click="uploadedFileFlag = null; "
-            id="change-profile-image"> {{fileName}} </button>
         </div>
-        <div data-ng-show="selectedCategory.name === 'Solution Pack'">
-          <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
-          </span>
-          <div class="file-upload margin-top-6" data-ng-model="uploadedFile" ngf-select="uploadFiles(uploadedFile)"
-            data-ngf-drop="uploadFiles(uploadedFile)" data-ng-show="!uploadedFileFlag" data-accept=".zip"
-            data-ngf-pattern="'.zip,.tgz,.json'">
-            <h2 class="margin-top-sm margin-bottom-0">
-              <span class="padding-right-sm fa fa-folder-open"></span>
-            </h2>
-            <h5 class="margin-top-sm" style="background-color: unset; text-align: center;">Drop a zip</h5>
-            <p>or click to use standard uploader</p>
-            <p>(File Size should not exceed 25MB)</p>
+        <div id="solution-details">
+          <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Details <span
+              class="text-danger">*</span></label>
+          <div
+            data-ng-class="{ 'has-error': communitySubmissionForm.solutionDetails.$invalid && communitySubmissionForm.solutionDetails.$touched }"
+            class="display-flex">
+            <div data-cs-markdown-editor data-mode="'edit'" DATA-wait-for-load="250" style="width:100%" data-ng-disabled="submitFormFlag"
+              data-ng-model="solutionDetails" data-config="markdownConfig" data-form-name="solutionDetails"></div>
           </div>
-          <button type="button" data-ng-show="uploadedFileFlag"
-            class="icon icon-edit btn btn-link margin-top-sm center-block" data-ng-click="uploadedFileFlag = null; "
-            id="change-profile-image">
-            <div>
-              {{fileName}}
+        </div>
+
+        <div>
+          <label class="padding-top-md">
+            <input data-ng-disabled="submitFormFlag" type="checkbox" name="showCreatedSolutions" id="showCreatedSolutions"
+              data-ng-model="showCreatedSolutions">
+          </label>
+          <label class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md margin-left-md">Upload
+            Custom Solution </label>
+          <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress"
+            class="icon icon-information font-Size-13"></i>
+        </div>
+
+        <div data-ng-if="!showCreatedSolutions">
+          <div id="installedSPorC"
+            data-ng-class="{ 'has-error': communitySubmissionForm.selectSolution.$invalid && communitySubmissionForm.selectSolution.$touched }">
+            <label id="field-for-data-source" class="control-label">Select Solution
+              <span class="text-danger">*</span>
+            </label>
+            <select data-ng-disabled="submitFormFlag" class="form-control" name="selectSolution" data-ng-model="selectedSolution.selectedSolution"
+              required>
+              <option value="">Select an Option</option>
+              <option ng-repeat="content in createdContent" value={{content}}>{{content.label + ' - ' + content.version}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div id="upload-a-file" class="margin-top-md" data-ng-show="!loadingJob && showCreatedSolutions">
+          <div data-ng-show="selectedCategory.name === 'Widget' || selectedCategory.name === 'Connector'">
+            <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
+            </span>
+            <div class="file-upload margin-top-6" data-ng-model="uploadedFile" ngf-select="uploadFiles(uploadedFile)"
+              data-ngf-drop="uploadFiles(uploadedFile)" data-ng-show="!uploadedFileFlag" data-accept=".tgz"
+              data-ngf-pattern="'.zip,.tgz,.json'">
+              <h2 class="margin-0">
+                <span class="padding-right-sm fa fa-folder-open"></span>
+              </h2>
+              <h5 class="margin-top-sm margin-bottom-0 padding-0" style="background-color: unset; text-align: center;">
+                Drop a tgz</h5>
+              <div>or click to use standard uploader</div>
+              <div>(File Size should not exceed 25MB)</div>
             </div>
-          </button>
+            <button type="button" data-ng-show="uploadedFileFlag"
+              class="icon icon-edit btn btn-link margin-top-sm center-block" data-ng-click="uploadedFileFlag = null; "
+              id="change-profile-image"> {{fileName}} </button>
+          </div>
+          <div data-ng-show="selectedCategory.name === 'Solution Pack'">
+            <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
+            </span>
+            <div class="file-upload margin-top-6" data-ng-model="uploadedFile" ngf-select="uploadFiles(uploadedFile)"
+              data-ngf-drop="uploadFiles(uploadedFile)" data-ng-show="!uploadedFileFlag" data-accept=".zip"
+              data-ngf-pattern="'.zip,.tgz,.json'">
+              <h2 class="margin-top-sm margin-bottom-0">
+                <span class="padding-right-sm fa fa-folder-open"></span>
+              </h2>
+              <h5 class="margin-top-sm margin-bottom-0 padding-0" style="background-color: unset; text-align: center;">
+                Drop a zip</h5>
+              <div>or click to use standard uploader</div>
+              <div>(File Size should not exceed 25MB)</div>
+            </div>
+            <button type="button" data-ng-show="uploadedFileFlag"
+              class="icon icon-edit btn btn-link margin-top-sm center-block" data-ng-click="selectedCategoryChanged() "
+              id="change-profile-image">
+                {{fileName}}
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <div data-ng-if="playbookTriggered">
+    <div data-ng-if="enableSpinner">
       <cs-spinner></cs-spinner>
     </div>
   </form>
-  <div id="footer">
-    <div class="disclaimer-position">
-      <div class="disclaimer-text">
-        <i class="fa fa-exclamation-circle"></i>
-        Note: Upon submission of this page, email will be triggered with an user filled information and
-        selected/uploaded solution to FortiSOAR experts in Fortinet.
+  <div data-ng-show="!nextPage" id="submit-form-footer" class="width-100pt">
+    <div id="disclaimer-box" class="disclaimer-position padding-top-md" style="box-shadow: 0px -1px 8px 1px rgba(0,0,0,.8);">
+      <div class="disclaimer-text" style="display: flex;">
+        <i class="fa fa-exclamation-circle disclaimer-symbol"></i>
+        <div class="text" style="font-size: 12px;">
+          Note: Upon submission of this page, email will be triggered with an user filled information and
+          selected / uploaded solution to FortiSOAR experts in Fortinet.
+        </div>
       </div>
     </div>
-    <div class="text-center submit-button-style">
-      <button type="submit" data-ng-disabled="playbookTriggered"
-        class="btn btn-primary btn-sm margin-right-md width-100px">
-        <i class="icon icon-check">
-        Submit
-      </button>
-      <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2"
-        data-ng-disabled="playbookTriggered" data-ng-click="cancel()"><i
-          class="icon icon-close margin-right-sm"></i>Cancel
-      </button>
+    <div id="footer" class="position-relative">
+      <div class="text-center submit-button-style">
+        <button data-ng-click="submit()" data-ng-disabled="submitFormFlag"
+          class="btn btn-primary btn-sm margin-right-md width-100px display-flex">
+          <i data-ng-if="!submitFormFlag"  class="icon icon-check margin-right-md margin-top-3"></i>
+          <div data-ng-if="submitFormFlag" >
+            <div class="custom-loader">
+              <div class="custom-cs-spinner"></div>
+            </div>
+          </div>
+          Submit
+        </button>
+        <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2"
+          data-ng-disabled="submitFormFlag" data-ng-click="cancel()"><i
+            class="icon icon-close margin-right-sm"></i>Cancel
+        </button>
+      </div>
     </div>
   </div>
 
   <div id="Thank You Image" data-ng-if="nextPage"">
     <img style=" height:280px" src=" widgets/installed/communitySubmission-1.0.0/images/Thankyou.svg" alt="Bot">
-
     <div style="position:relative; left:25px;">
       Next Steps
       <p style=" color: #D2D5DA; width: 90%; display: block; font-size: 12px;" class="margin-top-md">
-        To ensure a smooth process and honour your valuable contribution to the FortiSOAR community, we've outlined the
-        steps that will be taken once you submit the .tgz file:
+        Thank you for your valuable contribution to the FortiSOAR community. To ensure a smooth process, we have outlined the steps that will be taken once you submit your contribution:
       </p>
       <!-- <div style="font-size: 12px;color: #D2D5DA; width: 90%; display: block;"> -->
       <ul class="styled-list">
         <li>
-          Upon submission of the .tgz file, you will receive an email containing the Git repository details.
+          Upon submission of your solution, you will receive an email containing the Git repository details. If you are familiar with Git, you have the option to fork the repository and submit your contribution. Alternatively, if Git is not within your comfort zone, we will proceed to submit the code on your behalf.
         </li>
         <li>
-          If you're familiar with Git, you have the option to fork the repository and submit your contribution.
-          Alternatively, if Git is not within your comfort zone, we will proceed to submit the code on your behalf.
+          After the Pull Request (PR) is raised, our team will diligently review it within a period of 2 weeks.        </li>
+        <li>
+          Upon successful merging of the PR, the solutions will be officially available on the FortiSOAR Content Hub.
         </li>
         <li>
-          After the Pull Request (PR) is raised, our team will diligently review it within a period of 2 weeks.
-        </li>
-        <li>
-          Upon successful merging of the PR, the connector will be officially available on the FortiSOAR Content Hub.
-          Please note that this process may take approximately 2 weeks.
-
-          Please note if you only submit the .tgz file, our team will take care of uploading the code to Git and
-          facilitating its release on the FortiSOAR Content Hub.
-        </li>
-        <li>
-          Congratulations! You will be notified by email once the connector is officially released.
-        </li>
+          Please note, this process may take approximately 2 weeks. The email address provided during submission will be used for all further communication, including the release of a solution.        </li>
       </ul>
       <p style=" color: #D2D5DA; width: 90%; display: block; font-size: 12px;" class="margin-top-md">
-        We appreciate your contribution and look forward to the collaborative efforts in enhancing our community. If you
-        have any questions or need further assistance, feel free to reach out at  fsr-integrations@fortinet.com.
+        We appreciate your contribution and look forward to our collaborative efforts in enhancing our community. If you have any questions or need further assistance, feel free to reach out to us at 
+        <span style="color: #01a9b1;">fsr-integrations@fortinet.com</span>.
       </p>
-      <!-- </div> -->
-
-      <div style="text-align: center;">
-        <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2"
-          data-ng-disabled="playbookTriggered" data-ng-click="cancel()"><i
-            class="icon icon-close margin-right-sm"></i>Close
-        </button>
-      </div>
-
-
     </div>
-
+    <div class="next-page-close">
+      <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2" data-ng-click="cancel()"><i
+          class="icon icon-close margin-right-sm"></i>Close
+      </button>
+    </div>
   </div>
 </div>

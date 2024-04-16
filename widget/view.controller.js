@@ -25,15 +25,13 @@ Copyright end */
     $scope.user = {
       solutionTitle: ''
     };
-    $scope.selectedCategory = {
-      name: ''
-    };
+    $scope.selectedCategory = { name: '' };
     $scope.selectedSolution = {
       selectedSolution: ''
     }
+    $scope.closeNote = closeNote;
     $scope.selectedCategoryChanged = selectedCategoryChanged;
     $scope.uploadFiles = uploadFiles;
-    $scope.selectionChanged = selectionChanged;
     $scope.fileName = '';
     $scope.uploadedFileFlag = null;
     $scope.submit = submit;
@@ -48,30 +46,28 @@ Copyright end */
         'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'
       ]
     };
-
+    $scope.nextPage = false;
 
     init();
     function init() {
-      // getMdInstance();
       communitySubmissionService.getInstalledContent($scope).then(function (result) {
         $scope.createdContent = result;
       });
-      // markdownEditorService.insertContent(mdEditorInstance, template);
     }
 
-    function selectionChanged(){
-      $scope.solutionDetails = 'Description:  \nDocuments Included: Yes/No ';
-
-    }
-
-    function selectedCategoryChanged(category){
-      $scope.selectedCategory.name = category.name;
+    function selectedCategoryChanged(){
+      $scope.uploadedFileFlag = null;
+      $scope.selectedSolution.selectedSolution = null;
+      if($scope.fileMetadata && $scope.fileMetadata.id){
+        communitySubmissionService.deleteFile(angular.copy($scope.fileMetadata.id));
+        $scope.fileMetadata = null;
+      }
+      $scope.fileName = null;
     }
 
     function uploadFiles(file) {
       // Filter out folders from the selected files
-      $scope.playbookTriggered = true;
-
+      $scope.enableSpinner = true;
       if (file.size < 25072682) {
         if (file.type) {
           file.upload = Upload.upload({
@@ -82,11 +78,11 @@ Copyright end */
           });
           $scope.loadingJob = true;
           file.upload.then(function (response) {
-            $scope.fileIRI = response.data;
+            $scope.fileMetadata = response.data;
             $scope.fileName = response.data.filename;
             $scope.loadingJob = false;
             $scope.uploadedFileFlag = true;
-            $scope.playbookTriggered = false;
+            $scope.enableSpinner = false;
             if (!$scope.showCreatedSolutions) {
               communitySubmissionService.triggerPlaybook($scope);
             }
@@ -100,22 +96,28 @@ Copyright end */
               if (response.status === 413) {
                 message = 'File exceeds the maximum size.';
               }
-              $scope.playbookTriggered = false;
+              $scope.enableSpinner = false;
               toaster.error({ body: message });
             });
         }
       }
       else {
-        $scope.playbookTriggered = false;
-
+        $scope.enableSpinner = false;
         toaster.error({ body: 'File size exceeded limit, please try again' });
       }
     }
 
+    function closeNote() {
+      var disclaimerBox = document.getElementById('disclaimer-box');
+      disclaimerBox.remove();
+      var formDetails = document.getElementById('community-details-form');
+      formDetails.setAttribute('style', 'margin-top: 0px; height: 865px;');
+    }
+
     function cancel() {
-      delete $scope.playbookTriggered;
+      delete $scope.submitFormFlag;
       delete $scope.uploadedFile;
-      delete $scope.user.fullName 
+      delete $scope.user.fullName
       delete $scope.user.emailId;
       $scope.user = {
         organizationName: ''
@@ -129,7 +131,10 @@ Copyright end */
       const customModal = document.getElementById('custom-modal');
       $scope.nextPage = false;
       customModal.setAttribute('style', 'display:none;');
+      $scope.communitySubmissionForm.$setPristine();
+      $scope.communitySubmissionForm.$setUntouched();
     }
+
 
     function submit() {
       if ($scope.communitySubmissionForm.$invalid) {
@@ -137,8 +142,10 @@ Copyright end */
         $scope.communitySubmissionForm.$focusOnFirstError();
         return;
       }
+      $scope.submitFormFlag = true;
       if (!$scope.showCreatedSolutions) {
-        communitySubmissionService.exportSolution($scope.selectedSolution.selectedSolution, $scope);
+        $scope.selectedSolution.selectedSolution = JSON.parse($scope.selectedSolution.selectedSolution);
+        communitySubmissionService.exportSolution(angular.copy($scope.selectedSolution.selectedSolution), $scope);
       }
       else {
         communitySubmissionService.triggerPlaybook($scope);
