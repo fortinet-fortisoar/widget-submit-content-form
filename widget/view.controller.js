@@ -1,6 +1,6 @@
 /* Copyright start
 MIT License
-Copyright (c) 2023 Fortinet Inc
+Copyright (c) 2024 Fortinet Inc
 Copyright end */
 'use strict';
 (function () {
@@ -47,6 +47,7 @@ Copyright end */
       ]
     };
     $scope.nextPage = false;
+    const maxFileSize = 25072682;
 
     init();
     function init() {
@@ -68,7 +69,7 @@ Copyright end */
     function uploadFiles(file) {
       // Filter out folders from the selected files
       $scope.enableSpinner = true;
-      if (file.size < 25072682) {
+      if (file.size < maxFileSize) {
         if (file.type) {
           file.upload = Upload.upload({
             url: API.BASE + 'files',

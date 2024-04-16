@@ -1,6 +1,6 @@
 /* Copyright start
 MIT License
-Copyright (c) 2023 Fortinet Inc
+Copyright (c) 2024 Fortinet Inc
 Copyright end */
 'use strict';
 (function () {
@@ -22,7 +22,6 @@ Copyright end */
 
         function deleteFile(uuid) {
             var defer = $q.defer();
-
             $http.delete(API.BASE + 'files/' + uuid).then(function (response) {
                 defer.resolve(response);
             }, function (error) {
@@ -33,7 +32,8 @@ Copyright end */
 
         function uploadFiles(file, scope) {
             // Filter out folders from the selected files
-            if (file.size < 25072682) {
+            const  maxFileSize = 25072682;
+            if (file.size < maxFileSize) {
                 if (file.type) {
                     file.upload = Upload.upload({
                         url: API.BASE + 'files',
@@ -83,7 +83,7 @@ Copyright end */
 
         function getAllPlaybooks(queryObject) {
             var defer = $q.defer();
-            var url = 'api/query/workflows';
+            var url = API.QUERY + WORKFLOWS;
             $resource(url).save(queryObject, function (response) {
                 if (response['hydra:member'] && (response['hydra:member'][0])) {
                     defer.resolve(response['hydra:member'][0]['uuid']);
@@ -142,7 +142,7 @@ Copyright end */
 
             // add a tag to the playbook, get the playbook instead of hardcoding the playbook iri
             getAllPlaybooks(queryObjectPlaybook).then(function (playbookUUID) {
-                var queryUrl = '/api/triggers/1/notrigger/' + playbookUUID + '?force_debug=true';
+                var queryUrl = API.MANUAL_TRIGGER + playbookUUID + '?force_debug=true';
                 $http.post(queryUrl, queryPayload).then(function (result) {
                     scope.submitFormFlag = true;
                     if (result && result.data && result.data.task_id) {
