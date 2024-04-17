@@ -1,11 +1,12 @@
 {
     "name": "communitySubmission",
     "title": "Community Submission",
-    "subTitle": "Community Submissions",
+    "subTitle": "To get community submissions such as widgets, sp's and connectors",
     "version": "1.0.0",
     "published_date": 1705319297,
     "releaseNotes": "unavailable",
     "metadata": {
+        "help_online": "https://github.com/fortinet-fortisoar/widget-community-submission/blob/release/1.0.0/README.md",
         "description": "To get community submissions such as widgets, sp's and connectors",
         "pages": [],
         "certified": "No",
@@ -13,7 +14,10 @@
         "compatibility": [
             "7.4.3"
         ],
-        "snapshots": [],
+        "snapshots": [
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/uploadCustom.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/fromFsr.png"
+        ],
         "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIGSURBVHgBrVaBUcMwDJQ5BsgGhA3KBmECwgSECQgTNEzQMkHLBNAJUiZoN0g2oBsYichF1Tl1nObvdG5jWS/LsiwDI2CtTXBI+O/BGHOASJghSkiU4fCAQmMqSB2IeM+yQUe2MBa0K5Q5yo+NR8Nr0z77pof0BYfKszNCyyKRsvh03zACawgBSVeeHdQoBZ9t37qEdT496xch0p2HMIVI0BqUtbK18zpOXgklOtcSLgTZUOQrrVAohRlMBLKlbBdyshETF+/UQ16qaCaGPXAh2GMG3okFdCZzlNgItCivsrBQvkBXBwjPoLIwV55WdjxKZSsTc18nmazdVsoxoHDOlK3E/hejxgjCFkNz6yGXdXkovPWbCIELzXXIAhuIfgRCIOIW/IX/CNtfRGJfpuOLppMr04Q2/EjMhzCqfKmv8Nu3mNdGcgifbw7D8CR+fxhOnkYQ3Lv3lOeWKDc9xijM76H3157WipY43ISuLClMBM9xlVqhFpMVTAA+V0la9yk5LOECcLFYqCRsZCTlPZaVpnXOQNdrETYDztLpF3CalLTuUV49IxbJIn7PBvRL5Zq6Vn0np1PwN4GUfBX0eJqrsIxp8PT6lT3X7NnuyuzA36z9ecw7dO1t370m3S10dWEdrGieJHDwesyJQ11FxjKzZ5rAc8SNCE9tuzc43tAI4sROWDCG4heWxJvSlbH0LQAAAABJRU5ErkJggg==",
         "contexts": [
             "drawer"
