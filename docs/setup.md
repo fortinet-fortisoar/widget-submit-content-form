@@ -4,8 +4,10 @@
 # Installation
 
 1. To install a widget, click **Content Hub** > **Discover**.
+
 2. From the list of widget that appears, search **Submit Content Form**.
 3. Click the **Submit Content Form** widget.
+
 4. Click **Install** on the bottom to begin installation.
 
 # Configuration

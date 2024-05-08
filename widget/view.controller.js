@@ -11,6 +11,7 @@ Copyright end */
   submitContentForm100Ctrl.$inject = ['$scope', 'Upload', 'API', 'toaster', 'submitContentFormService', 'markdownEditorService'];
   function submitContentForm100Ctrl($scope, Upload, API, toaster, submitContentFormService, markdownEditorService) {
 
+
     $scope.category = [{ name: 'Connector', type: 'connector' }, { name: 'Solution Pack', type: 'solutionpack' }, { name: 'Widget', type: 'widget' }]
     $scope.user = {
       fullName: ''
@@ -30,7 +31,6 @@ Copyright end */
       selectedSolution: ''
     }
     $scope.minimize = minimize;
-    // $scope.closeNote = closeNote;
     $scope.selectedCategoryChanged = selectedCategoryChanged;
     $scope.uploadFiles = uploadFiles;
     $scope.fileName = '';
@@ -70,12 +70,6 @@ Copyright end */
       }
       $scope.fileName = null;
     }
-
-
-    // function letsGetStarted(){
-    //   $scope.currentStep = 2;
-    // }
-
 
     function uploadFiles(file) {
       // Filter out folders from the selected files
@@ -118,14 +112,6 @@ Copyright end */
         toaster.error({ body: 'File size exceeded limit, please try again' });
       }
     }
-
-    // function closeNote() {
-    //   var disclaimerBox = document.getElementById('disclaimer-box');
-    //   disclaimerBox.remove();
-    //   var formDetails = document.getElementById('community-details-form');
-    //   formDetails.setAttribute('style', 'margin-top: 0px; height: 865px;');
-    // }
-
 
     function minimize(){
       const customModal = document.getElementById('custom-modal');
