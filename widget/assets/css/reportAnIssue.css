@@ -8,23 +8,42 @@
 
 
 .submit-button-style {
-  padding-right: 20px;
+  padding-left: 20px;
   display: flex;
-  justify-content: flex-end;
-  box-shadow: 0px -1px 8px 1px rgba(0, 0, 0, .8);
+  justify-content: flex-start;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.communitySubmission-help-icon p {
+.submit-content-form-header{
+  display: flex;
+  justify-content: end;
+  border-bottom: 1px solid black;
+}
+
+.submit-content-form-header p {
   text-align: center;
-  width: 26px;
-  font-size: 18px;
-  height: 26px;
+  width: 20px;
+  font-size: 14px;
+  height: 20px;
   border: 1px solid;
   border-radius: 50%;
   color: white;
+  margin-bottom: 0px;
+  position: relative;
+  margin-right: 16px;
 }
+
+.submit-content-form-header span{
+  margin-right: 30px;
+    /* display: inline-block; */
+    /* padding-bottom: 15px; */
+    font-size: 32px;
+    transform: scale(1.5, 0.5);
+    position: relative;
+    bottom: 11px;
+}
+
 
 .disclaimer-position {
   padding-right: 20px;
@@ -46,20 +65,21 @@
   padding-bottom: 5px;
 }
 
+
 .community-form-overflow {
-  height: 820px;
-  overflow-y: auto;
+  height: calc(100vh);
 }
 
 .next-page-close {
-  position: fixed;
-  bottom: 8px;
+  position: relative;
   right: 13px;
+  text-align: center;
+  top: 20px;
 }
 
 .styled-list {
   font-size: 12px;
-  color: #D2D5DA;
+  color: #A3AAB7;
   width: 90%;
   list-style-type: none;
   /* Remove default bullets */
@@ -76,19 +96,16 @@
 
 .styled-list li:before {
   content: "\2022";
-  /* Unicode character for bullet (•) */
+  position: relative;
   color: #169CAD;
-  /* Change bullet color */
-  font-size: 12px;
-  /* Adjust bullet size if necessary */
+  font-size: 16px;
   display: inline-block;
   width: 1em;
-  /* Adjust spacing between bullet and text */
+  z-index: 1;
   margin-left: -1em;
-  /* Adjust to align bullet properly */
 }
 
-.custom-loader{
+.custom-loader {
   background: #7fffd400;
   margin: 0px;
   width: 29px;
@@ -101,4 +118,117 @@
   border: 3px solid #e9e9e9;
   border-right-color: transparent;
   border-radius: 50%;
+}
+
+.styled-list:before {
+  background-color: #9d9d9d;
+  margin-left: 0px;
+  width: 1px;
+  top: 89px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  left: 8px;
+  height: 54%;
+}
+
+.content-navigation {
+  width: 37%;
+  padding: 22px;
+  background: #1A202A;
+}
+
+.navigation-page-1{
+  position: relative;
+  width: 52%;
+  text-align: center;
+  top: 20%;
+  left: 20%;
+}
+
+.navigation-page-2{
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+}
+
+.content-form {
+  margin-left: 0px;
+  padding: 18px;
+  background: #1C2531;
+  width: 63%;
+  height: 100vh;
+}
+
+.content-form-text{
+  font-size: 13px;
+  color: #A3AAB7;
+}
+
+.circle-outer-div{
+  border: 1px solid #758195;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-inner-div{
+  border: 1px solid #758195;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #758195;
+}
+
+.circle-outer-div-selected{
+  border: 1px solid #169CAD;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #169CAD;
+}
+
+.circle-inner-div-selected{
+  border: 1px solid #E0F8FC;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #E0F8FC;
+}
+
+.current-step{
+  background: #141B22;
+  display: flex;
+  width: 88%;
+  padding: 10px;
+}
+
+.note-style{
+  font-size: 12px;
+  font-style: italic;
+  color: #768092;
+  padding-top: 10px;
+}
+
+.current-step-subtitle{
+  font-size: 12px;color: #D2D5DA; font-weight: 400; line-height: 20px;
+}
+
+.current-step-heading{
+  color: #F7F8F9;font-size: 13px; font-weight: 600;
+}
+
+.submission-widget-container{
+  background-color: #1A202A; width: 160%; position: absolute; right: -2px; top: -24px;
+}
+
+.thank-you-image-div{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

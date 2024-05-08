@@ -6,10 +6,10 @@ Copyright end */
 (function () {
   angular
     .module('cybersponse')
-    .controller('communitySubmission100Ctrl', communitySubmission100Ctrl);
+    .controller('submitContentForm100Ctrl', submitContentForm100Ctrl);
 
-  communitySubmission100Ctrl.$inject = ['$scope', 'Upload', 'API', 'toaster', 'communitySubmissionService', 'markdownEditorService'];
-  function communitySubmission100Ctrl($scope, Upload, API, toaster, communitySubmissionService, markdownEditorService) {
+  submitContentForm100Ctrl.$inject = ['$scope', 'Upload', 'API', 'toaster', 'submitContentFormService', 'markdownEditorService'];
+  function submitContentForm100Ctrl($scope, Upload, API, toaster, submitContentFormService, markdownEditorService) {
 
     $scope.category = [{ name: 'Connector', type: 'connector' }, { name: 'Solution Pack', type: 'solutionpack' }, { name: 'Widget', type: 'widget' }]
     $scope.user = {
@@ -29,7 +29,8 @@ Copyright end */
     $scope.selectedSolution = {
       selectedSolution: ''
     }
-    $scope.closeNote = closeNote;
+    $scope.minimize = minimize;
+    // $scope.closeNote = closeNote;
     $scope.selectedCategoryChanged = selectedCategoryChanged;
     $scope.uploadFiles = uploadFiles;
     $scope.fileName = '';
@@ -46,12 +47,16 @@ Copyright end */
         'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'
       ]
     };
-    $scope.nextPage = false;
+    $scope.moveToStep = moveToStep;
+
+    $scope.showCreatedSolutions = 'created';
+    $scope.currentStep = 1;
+    // $scope.letsGetStarted = letsGetStarted;
     const maxFileSize = 25072682;
 
     init();
     function init() {
-      communitySubmissionService.getInstalledContent($scope).then(function (result) {
+      submitContentFormService.getInstalledContent($scope).then(function (result) {
         $scope.createdContent = result;
       });
     }
@@ -60,11 +65,17 @@ Copyright end */
       $scope.uploadedFileFlag = null;
       $scope.selectedSolution.selectedSolution = null;
       if($scope.fileMetadata && $scope.fileMetadata.id){
-        communitySubmissionService.deleteFile(angular.copy($scope.fileMetadata.id));
+        submitContentFormService.deleteFile(angular.copy($scope.fileMetadata.id));
         $scope.fileMetadata = null;
       }
       $scope.fileName = null;
     }
+
+
+    // function letsGetStarted(){
+    //   $scope.currentStep = 2;
+    // }
+
 
     function uploadFiles(file) {
       // Filter out folders from the selected files
@@ -84,8 +95,8 @@ Copyright end */
             $scope.loadingJob = false;
             $scope.uploadedFileFlag = true;
             $scope.enableSpinner = false;
-            if (!$scope.showCreatedSolutions) {
-              communitySubmissionService.triggerPlaybook($scope);
+            if ($scope.showCreatedSolutions === 'created') {
+              submitContentFormService.triggerPlaybook($scope);
             }
           },
             function (response) {
@@ -108,11 +119,24 @@ Copyright end */
       }
     }
 
-    function closeNote() {
-      var disclaimerBox = document.getElementById('disclaimer-box');
-      disclaimerBox.remove();
-      var formDetails = document.getElementById('community-details-form');
-      formDetails.setAttribute('style', 'margin-top: 0px; height: 865px;');
+    // function closeNote() {
+    //   var disclaimerBox = document.getElementById('disclaimer-box');
+    //   disclaimerBox.remove();
+    //   var formDetails = document.getElementById('community-details-form');
+    //   formDetails.setAttribute('style', 'margin-top: 0px; height: 865px;');
+    // }
+
+
+    function minimize(){
+      const customModal = document.getElementById('custom-modal');
+      customModal.setAttribute('style', 'display:none;');
+      $scope.submitContentFormForm.$setPristine();
+      $scope.submitContentFormForm.$setUntouched();
+    }
+
+    function moveToStep(stepNumber){
+      if( $scope.currentStep != 3)
+      {$scope.currentStep = stepNumber;}
     }
 
     function cancel() {
@@ -129,27 +153,27 @@ Copyright end */
       };
       $scope.uploadedFileFlag = null;
       $scope.selectedSolution.selectedSolution = '';
+      $scope.currentStep = 1;
       const customModal = document.getElementById('custom-modal');
-      $scope.nextPage = false;
       customModal.setAttribute('style', 'display:none;');
-      $scope.communitySubmissionForm.$setPristine();
-      $scope.communitySubmissionForm.$setUntouched();
+      $scope.submitContentFormForm.$setPristine();
+      $scope.submitContentFormForm.$setUntouched();
     }
 
 
     function submit() {
-      if ($scope.communitySubmissionForm.$invalid) {
-        $scope.communitySubmissionForm.$setTouched();
-        $scope.communitySubmissionForm.$focusOnFirstError();
+      if ($scope.submitContentFormForm.$invalid) {
+        $scope.submitContentFormForm.$setTouched();
+        $scope.submitContentFormForm.$focusOnFirstError();
         return;
       }
       $scope.submitFormFlag = true;
-      if (!$scope.showCreatedSolutions) {
+      if ($scope.showCreatedSolutions === 'created') {
         $scope.selectedSolution.selectedSolution = JSON.parse($scope.selectedSolution.selectedSolution);
-        communitySubmissionService.exportSolution(angular.copy($scope.selectedSolution.selectedSolution), $scope);
+        submitContentFormService.exportSolution(angular.copy($scope.selectedSolution.selectedSolution), $scope);
       }
       else {
-        communitySubmissionService.triggerPlaybook($scope);
+        submitContentFormService.triggerPlaybook($scope);
       }
     }
   }

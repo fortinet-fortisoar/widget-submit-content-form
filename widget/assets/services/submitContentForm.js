@@ -6,11 +6,11 @@ Copyright end */
 (function () {
     angular
         .module('cybersponse')
-        .factory('communitySubmissionService', communitySubmissionService);
+        .factory('submitContentFormService', submitContentFormService);
 
-    communitySubmissionService.$inject = ['Upload', 'API', 'toaster', 'playbookService', '$timeout', '$http', '$q', 'ALL_RECORDS_SIZE', 'MARKETPLACE', 'connectorService', 'marketplaceService', 'Modules', '$interval', '$resource'];
+    submitContentFormService.$inject = ['Upload', 'API', 'toaster', 'playbookService', '$timeout', '$http', '$q', 'ALL_RECORDS_SIZE', 'MARKETPLACE', 'connectorService', 'marketplaceService', 'Modules', '$interval', '$resource'];
 
-    function communitySubmissionService(Upload, API, toaster, playbookService, $timeout, $http, $q, ALL_RECORDS_SIZE, MARKETPLACE, connectorService, marketplaceService, Modules, $interval, $resource) {
+    function submitContentFormService(Upload, API, toaster, playbookService, $timeout, $http, $q, ALL_RECORDS_SIZE, MARKETPLACE, connectorService, marketplaceService, Modules, $interval, $resource) {
 
         var service = {
             exportSolution: exportSolution,
@@ -83,7 +83,7 @@ Copyright end */
 
         function getAllPlaybooks(queryObject) {
             var defer = $q.defer();
-            var url = API.QUERY + WORKFLOWS;
+            var url = API.QUERY + API.WORKFLOWS;
             $resource(url).save(queryObject, function (response) {
                 if (response['hydra:member'] && (response['hydra:member'][0])) {
                     defer.resolve(response['hydra:member'][0]['uuid']);
@@ -154,7 +154,7 @@ Copyright end */
                                             deleteFile(scope.fileMetadata['id']);
                                         }
                                         scope.submitFormFlag = false;
-                                        scope.nextPage = true;
+                                        scope.currentStep = 3;
                                         defer.resolve({
                                             result: res.result,
                                             status: response.status
@@ -162,7 +162,6 @@ Copyright end */
                                     }
                                     else {
                                         toaster.error({ body: 'Playbook failed please try again' });
-                                        scope.nextPage = false;
                                         defer.reject('Playbook failed');
                                     }
                                 }, function (err) {
