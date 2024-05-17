@@ -5,14 +5,6 @@ Copyright (c) 2024 Fortinet Inc
 Copyright end 
 */
 
-.picklist-select-product {
-  background: #f0f8ff00;
-  height: 32px;
-  position: absolute;
-  right: 24px;
-  border-radius: 4px;
-}
-
 
 .submit-button-style {
   padding-left: 20px;
@@ -22,10 +14,9 @@ Copyright end
   padding-bottom: 8px;
 }
 
-.submit-content-form-header{
+.submit-content-form-header {
   display: flex;
   justify-content: end;
-  border-bottom: 1px solid black;
 }
 
 .submit-content-form-header p {
@@ -41,12 +32,16 @@ Copyright end
   margin-right: 16px;
 }
 
-.submit-content-form-header span{
+.header-divider {
+  margin: 0px;
+}
+
+.submit-content-form-header span {
   margin-right: 30px;
-    font-size: 32px;
-    transform: scale(1.5, 0.5);
-    position: relative;
-    bottom: 11px;
+  font-size: 32px;
+  transform: scale(1.5, 0.5);
+  position: relative;
+  bottom: 11px;
 }
 
 
@@ -73,6 +68,7 @@ Copyright end
 
 .community-form-overflow {
   height: calc(100vh);
+  padding: 18px;
 }
 
 .next-page-close {
@@ -87,27 +83,27 @@ Copyright end
   color: #A3AAB7;
   width: 90%;
   list-style-type: none;
-  /* Remove default bullets */
   padding: 0;
-  /* Remove default padding */
 }
 
 .styled-list li {
   padding-left: 20px;
-  /* Add padding for indentation */
-  margin-bottom: 10px;
-  /* Add margin between list items */
 }
 
 .styled-list li:before {
   content: "\2022";
   position: relative;
   color: #169CAD;
-  font-size: 16px;
+  font-size: 18px;
   display: inline-block;
   width: 1em;
   z-index: 1;
   margin-left: -1em;
+}
+
+.styled-list li div{
+  position: relative;
+  bottom: 19px;
 }
 
 .custom-loader {
@@ -125,17 +121,6 @@ Copyright end
   border-radius: 50%;
 }
 
-.styled-list:before {
-  background-color: #9d9d9d;
-  margin-left: 0px;
-  width: 1px;
-  top: 89px;
-  bottom: 0;
-  position: absolute;
-  content: " ";
-  left: 8px;
-  height: 54%;
-}
 
 .content-navigation {
   width: 37%;
@@ -143,7 +128,11 @@ Copyright end
   background: #1A202A;
 }
 
-.navigation-page-1{
+.content-navigation-white{
+  background: #F8FAFC !important;
+}
+
+.navigation-page-1 {
   position: relative;
   width: 52%;
   text-align: center;
@@ -151,25 +140,32 @@ Copyright end
   left: 20%;
 }
 
-.navigation-page-2{
+.navigation-page-2 {
   overflow-y: auto;
   height: calc(100vh - 100px);
 }
 
 .content-form {
   margin-left: 0px;
-  padding: 18px;
   background: #1C2531;
   width: 63%;
   height: 100vh;
 }
 
-.content-form-text{
+.content-form{
+  background: white !important;
+}
+
+.content-form-text {
   font-size: 13px;
   color: #A3AAB7;
 }
 
-.circle-outer-div{
+.content-form-text-white{
+  color: #48556F;
+}
+
+.circle-outer-div {
   border: 1px solid #758195;
   height: 23px;
   width: 23px;
@@ -179,7 +175,7 @@ Copyright end
   align-items: center;
 }
 
-.circle-inner-div{
+.circle-inner-div {
   border: 1px solid #758195;
   height: 8px;
   width: 8px;
@@ -187,7 +183,7 @@ Copyright end
   background: #758195;
 }
 
-.circle-outer-div-selected{
+.circle-outer-div-selected {
   border: 1px solid #169CAD;
   height: 23px;
   width: 23px;
@@ -198,7 +194,11 @@ Copyright end
   background: #169CAD;
 }
 
-.circle-inner-div-selected{
+.circle-outer-div-selected-white{
+  background: #4676B2 !important;
+}
+
+.circle-inner-div-selected {
   border: 1px solid #E0F8FC;
   height: 8px;
   width: 8px;
@@ -206,34 +206,63 @@ Copyright end
   background: #E0F8FC;
 }
 
-.current-step{
+.current-step {
   background: #141B22;
   display: flex;
   width: 88%;
   padding: 10px;
+  border-radius: 4px;
 }
 
-.note-style{
+.current-step-white{
+  background: #7BAAF3;
+}
+
+.note-style {
   font-size: 12px;
   font-style: italic;
   color: #768092;
   padding-top: 10px;
 }
 
-.current-step-subtitle{
-  font-size: 12px;color: #D2D5DA; font-weight: 400; line-height: 20px;
+.current-step-subtitle {
+  font-size: 12px;
+  color: #D2D5DA;
+  font-weight: 400;
+  line-height: 20px;
 }
 
-.current-step-heading{
-  color: #F7F8F9;font-size: 13px; font-weight: 600;
+.current-step-heading {
+  color: #F7F8F9;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.submission-widget-container{
-  background-color: #1A202A; width: 160%; position: absolute; right: -2px; top: -24px;
+.submission-widget-container {
+  background-color: #1A202A;
+  width: 160%;
+  position: absolute;
+  right: -2px;
+  top: -33px;
 }
 
-.thank-you-image-div{
+.thank-you-image-div {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+
+.step-not-completed {
+  color: #768092 !important;
+}
+
+.title-color {
+  color: #A3AAB7
+}
+.title-color-white {
+  color: #172B4D
+}
+
+.border-radius-5 {
+  border-radius: 5px;
 }

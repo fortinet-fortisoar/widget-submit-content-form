@@ -10,23 +10,25 @@ Copyright end -->
     <div class="content-navigation">
       <div>
         <h3 class="font-size-14" style=" margin: 5px;">
-          <img src="widgets/installed/submitContentForm-1.0.0/images/Chat.svg"
+          <img src="widgets/installed/submitContentForm-1.0.0/images/submitContentIcon.svg"
             style="height: 18px; margin-right: 3px; margin-bottom: 2px" alt="Community Submissions">
-          Submit Your Content
+          {{viewWidgetVars.SUBMIT_YOUR_CONTENT}}
         </h3>
-        <div class="note-style">
-          Upon submission, email will be triggered with a user filled information and selected/uploaded solution to FortiSOAR Integration experts.        </div>
+        <div class="note-style" id="upon-submission-of-email">
+          {{viewWidgetVars.UPON_SUBMISSION_EMAIL_TRIGGERED}}</div>
       </div>
       <div id="static-image" style="text-align: right; margin-top: 20px;">
-          <img src="widgets/installed/submitContentForm-1.0.0/images/contentFiller.svg" style="position: relative; left: 24px;">
-        </div>
+        <img src="widgets/installed/submitContentForm-1.0.0/images/contentFiller.svg"
+          style="position: relative; left: 24px; height: 450px;">
+      </div>
       <div class="position-absolute" style="bottom: 30px; width: inherit;">
-        <h3 class="font-size-14" style=" margin: 5px;">
-          Complete these steps
+        <h3 class="font-size-14 title-color" style="margin: 5px;">
+          {{viewWidgetVars.COMPLETE_THESE_STEPS}}
         </h3>
-        <div data-ng-click="moveToStep(1)" class="display-flex padding-md" data-ng-class="{'current-step' : currentStep === 1}" id="step--1">
+        <div data-ng-click="moveToStep(1)" class="display-flex padding-md"
+          data-ng-class="{'current-step' : currentStep === 1}"  id="step--1">
           <div style="padding-top: 4px;">
-            <div class="circle-outer-div-selected" >
+            <div class="circle-outer-div-selected"  data-ng-class="{'circle-outer-div-selected-white' : currentStep === 1}"  >
               <div class="circle-inner-div-selected" data-ng-if="currentStep == 1">
               </div>
               <div class="font-size-11 icon icon-check-variant" data-ng-if="currentStep > 1">
@@ -34,18 +36,20 @@ Copyright end -->
             </div>
           </div>
           <div style="padding-left: 13px;" class="margin-left-md">
-            <div class="current-step-heading">
-              Welcome
+            <div class="current-step-heading" >
+              {{viewWidgetVars.WELCOME}}
             </div>
-            <div  class="current-step-subtitle">
-              Details about your submission
+            <div class="current-step-subtitle">
+              {{viewWidgetVars.DETAILS_ABOUT_YOUR_SUBMISSION}}
             </div>
           </div>
-          <span data-ng-if="currentStep == 1" class="fa fa-angle-right" style="text-align: right;margin: auto 0 auto auto;"></span>
+          <span data-ng-if="currentStep == 1" class="fa fa-angle-right"
+            style="text-align: right;margin: auto 0 auto auto;"></span>
         </div>
-        <div data-ng-click="moveToStep(2)" class="display-flex padding-md" data-ng-class="{'current-step' : currentStep === 2}" id="step--2">
+        <div data-ng-click="moveToStep(2)" class="display-flex padding-md"
+          data-ng-class="{'current-step' : currentStep === 2}" id="step--2">
           <div style="padding-top: 4px;">
-            <div class="circle-outer-div"  data-ng-if="currentStep === 1" >
+            <div class="circle-outer-div" data-ng-if="currentStep === 1">
               <div class="circle-inner-div">
               </div>
             </div>
@@ -57,14 +61,15 @@ Copyright end -->
             </div>
           </div>
           <div style="padding-left: 13px;" class="margin-left-md">
-            <div class="current-step-heading">
-              Content Form
+            <div class="current-step-heading" data-ng-class="{'step-not-completed' : currentStep < 2}">
+              {{viewWidgetVars.CONTENT_FORM}}
             </div>
-            <div class="current-step-subtitle">
-              Please provide your details and content information.
+            <div class="current-step-subtitle" data-ng-class="{'step-not-completed' : currentStep < 2}">
+              {{viewWidgetVars.PLEASE_PROVIDE_YOUR_DETAILS_AND_CONTENT_INFORMATION}}
             </div>
           </div>
-          <span data-ng-if="currentStep == 2" class="fa fa-angle-right" style="text-align: right;margin: auto 0 auto auto;"></span>
+          <span data-ng-if="currentStep == 2" class="fa fa-angle-right"
+            style="text-align: right;margin: auto 0 auto auto;"></span>
         </div>
         <div class="display-flex padding-md" data-ng-class="{'current-step' : currentStep === 3}" id="step--3">
           <div style="padding-top: 4px;">
@@ -72,85 +77,87 @@ Copyright end -->
               <div class="circle-inner-div">
               </div>
             </div>
-            <div class="circle-outer-div-selected"  data-ng-if="currentStep == 3" >
-              <div class="font-size-11 icon icon-check-variant" >
+            <div class="circle-outer-div-selected" data-ng-if="currentStep == 3">
+              <div class="font-size-11 icon icon-check-variant">
               </div>
             </div>
           </div>
           <div style="padding-left: 13px;" class="margin-left-md">
-            <div class="current-step-heading">
-              Content Submitted
+            <div class="current-step-heading" data-ng-class="{'step-not-completed' : currentStep < 3}">
+              {{viewWidgetVars.CONTENT_SUBMITTED}}
             </div>
-            <div  class="current-step-subtitle">
-              See details and next steps 
+            <div class="current-step-subtitle" data-ng-class="{'step-not-completed' : currentStep < 3}">
+              {{viewWidgetVars.SEE_DETAILS_AND_NEXT_STEPS}}
             </div>
           </div>
-          <span data-ng-if="currentStep == 3" class="fa fa-angle-right" style="text-align: right;margin: auto 0 auto auto;"></span>
+          <span data-ng-if="currentStep == 3" class="fa fa-angle-right"
+            style="text-align: right;margin: auto 0 auto auto;"></span>
         </div>
       </div>
     </div>
     <div class="content-form">
       <div class="submit-content-form-header">
-        <p  ng-click="openDocumentation()" style="margin-bottom: 0px;">?</p>
-        <span  ng-click="minimize()" style="margin-bottom: 0px;">-</span>
+        <p ng-click="openDocumentation()" style="margin-bottom: 0px;">?</p>
+        <span ng-click="minimize()" style="margin-bottom: 0px;">-</span>
       </div>
+      <hr class="header-divider">
 
       <div id="step-1" data-ng-if="currentStep == 1" class="navigation-page-1">
         <img src="widgets/installed/submitContentForm-1.0.0/images/submitContent.svg"
           style="margin-right: 3px; margin-bottom: 5px">
-        <div class="margin-top-lg">
-          Submit Content
+        <div class="margin-top-lg" style="font-size: 18px; font-weight:500;">
+          {{viewWidgetVars.SUBMIT_CONTENT}}
         </div>
         <div class="content-form-text margin-top-lg">
-          FortiSOAR Content Hub is a continually evolving suite that includes pre-built solution packs, a variety of
-          widgets, and over 500 security integrations. We invite our community users to actively participate by
-          creating  solution packs, widgets, and connectors for FortiSOAR."
+          {{viewWidgetVars.FORTISOAR_CONTENTHUB_INVITE_USERS}}
         </div>
-        <button data-ng-click="moveToStep(2)" class="btn btn-primary btn-sm margin-right-md margin-top-lg">
-          <div class="display-inline margin-left-md">
-            Lets Get Started
-          </div>
-          <i class="fa fa-long-arrow-right margin-right-md margin-top-3 padding-left-10"></i>
-        </button>
+        <div class="position-relative" style="top: 40px;">
+          <button data-ng-click="moveToStep(2)" class="btn btn-primary btn-sm margin-right-md margin-top-lg">
+            <div class="display-inline margin-left-md">
+              {{viewWidgetVars.LETS_GET_STARTED}}
+            </div>
+            <i class="fa fa-long-arrow-right margin-right-md margin-top-3 padding-left-10"></i>
+          </button>
+        </div>
+
       </div>
       <div id="step-2" data-ng-show="currentStep == 2" class="community-form-overflow">
         <form data-ng-submit="submit()" id="community-details-form" class="navigation-page-2"
           name="submitContentFormForm" data-ng-class="{'state-wait': processing }">
           <div id="body" class="margin-15">
-            <div class="font-size-14">
-              Submitter Details
+            <div class="font-size-14 title-color">
+              {{viewWidgetVars.SUBMITTER_DETAILS}}
             </div>
             <div id="submitter details">
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Name <span
+                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">{{viewWidgetVars.NAME}} <span
                     class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.fullName.$invalid && submitContentFormForm.fullName.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control" type="text" ng-model="user.fullName"
-                    name="fullName" required>
+                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
+                    ng-model="user.fullName" name="fullName" required>
                 </div>
               </div>
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Email-Id
+                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">{{viewWidgetVars.EMAIL_ID}}
                   <span class="text-danger">*</span>
                 </label>
-                <i data-uib-tooltip="Enter your email address here. This is used to communicate updates on solution progress"
-                  class="icon icon-information font-Size-13"></i>
+                <i class="icon icon-information font-Size-13"></i>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.email.$invalid && submitContentFormForm.email.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control" type="email" id="emails"
+                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="email" id="emails"
                     ng-model="user.emailId" name="email" required multiple>
                 </div>
               </div>
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Organization Name <span
-                    class="text-danger">*</span></label>
+                <label class="font-size-12" style="color:#D2D5DA"
+                  for="report-user-name">{{viewWidgetVars.ORGANIZATION_NAME}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.organizationName.$invalid && submitContentFormForm.organizationName.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control" type="text"
+                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
                     ng-model="user.organizationName" name="organizationName" required>
                 </div>
               </div>
@@ -159,35 +166,36 @@ Copyright end -->
             <hr style="border-color: #47546A !important;">
 
             <div class="font-size-14">
-              Solution Details
+              {{viewWidgetVars.SOLUTION_DETAILS}}
             </div>
             <div id="solution Details">
               <div class="margin-bottom-md" id="solution-title">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Title <span
-                    class="text-danger">*</span></label>
+                <label class="font-size-12" style="color:#D2D5DA"
+                  for="report-user-name">{{viewWidgetVars.SOLUTION_TITLE}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionTitle.$invalid && submitContentFormForm.solutionTitle.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control" type="text"
+                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
                     ng-model="user.solutionTitle" name="solutionTitle" required>
                 </div>
               </div>
               <div class="margin-bottom-md" id="selectCategory"
                 data-ng-class="{ 'has-error': submitContentFormForm.solutionCategory.$invalid && submitContentFormForm.solutionCategory.$touched }">
-                <label id="field-for-data-source" class="control-label font-size-12">Solution Category
+                <label id="field-for-data-source"
+                  class="control-label font-size-12">{{viewWidgetVars.SOLUTION_CATEGORY}}
                 </label>
                 <span class="text-danger">*</span>
                 <select name="solutionCategory" id="solutionCategory" class="form-control"
                   data-ng-disabled="submitFormFlag" data-ng-model="selectedCategory.name"
                   data-ng-change="selectedCategoryChanged()" required>
-                  <option value="">Select an Option</option>
+                  <option value="">{{viewWidgetVars.SELECT_AN_OPTION}}</option>
                   <option ng-repeat="content in category" value="{{content.name}}">{{content.name}}</option>
                 </select>
 
               </div>
               <div class="margin-bottom-md" id="solution-details">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">Solution Details <span
-                    class="text-danger">*</span></label>
+                <label class="font-size-12" style="color:#D2D5DA"
+                  for="report-user-name">{{viewWidgetVars.SOLUTION_DETAILS}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionDetails.$invalid && submitContentFormForm.solutionDetails.$touched }"
                   class="display-flex">
@@ -196,19 +204,21 @@ Copyright end -->
                     data-form-name="solutionDetails"></div>
                 </div>
               </div>
-              <label class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md">Upload
-                Content </label>
+              <label
+                class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md">{{viewWidgetVars.UPLOAD_CONTENT}}
+              </label>
               <!-- Radio Button -->
               <div class="row margin-bottom-sm">
                 <div class="col-md-6 padding-right-0">
                   <div class="radio">
-                    <label><input id="createdSolution" name="createdSolution" type="radio"
-                        data-ng-model="showCreatedSolutions" value="created">&nbsp;&nbsp;Select from created
-                      solutions</label>
+                    <label><input id="createdSolution" name="createdSolution" type="radio" class="border-radius-5"
+                        data-ng-model="showCreatedSolutions"
+                        value="created">&nbsp;&nbsp;{{viewWidgetVars.SELECT_FROM_CREATED_SOLUTION}}</label>
                   </div>
                   <div class="radio">
-                    <label><input id="customFile" name="custom-File" type="radio" data-ng-model="showCreatedSolutions"
-                        value="custom">&nbsp;&nbsp;Upload a custom file</label>
+                    <label><input id="customFile" name="custom-File" type="radio" class="border-radius-5"
+                        data-ng-model="showCreatedSolutions"
+                        value="custom">&nbsp;&nbsp;{{viewWidgetVars.UPLOAD_A_CUSTOM_FILE}}</label>
                   </div>
                 </div>
               </div>
@@ -217,12 +227,12 @@ Copyright end -->
               <div data-ng-if="showCreatedSolutions == 'created'">
                 <div id="installedSPorC"
                   data-ng-class="{ 'has-error': submitContentFormForm.selectSolution.$invalid && submitContentFormForm.selectSolution.$touched }">
-                  <label id="field-for-data-source" class="control-label">Select Solution
+                  <label id="field-for-data-source" class="control-label">{{viewWidgetVars.SELECT_SOLUTION}}
                     <span class="text-danger">*</span>
                   </label>
                   <select data-ng-disabled="submitFormFlag" class="form-control" name="selectSolution"
                     data-ng-model="selectedSolution.selectedSolution" required>
-                    <option value="">Select an Option</option>
+                    <option value="">{{viewWidgetVars.SELECT_AN_OPTION}}</option>
                     <option ng-repeat="content in createdContent" value={{content}}>{{content.label + ' - ' +
                       content.version}}
                     </option>
@@ -243,9 +253,9 @@ Copyright end -->
                     </h2>
                     <h5 class="margin-top-sm margin-bottom-0 padding-0"
                       style="background-color: unset; text-align: center;">
-                      Drop a tgz file</h5>
-                    <div>or click to use standard uploader</div>
-                    <div>(File Size should not exceed 25MB)</div>
+                      {{viewWidgetVars.DROP_A_TGZ_FILE}}</h5>
+                    <div>{{viewWidgetVars.OR_CLICK_TO_USE_STD}}</div>
+                    <div>{{viewWidgetVars.FILE_SHOULD_NOT_EXCEED_LIMIT}}</div>
                   </div>
                   <button type="button" data-ng-show="uploadedFileFlag"
                     class="icon icon-edit btn btn-link margin-top-sm center-block"
@@ -262,9 +272,9 @@ Copyright end -->
                     </h2>
                     <h5 class="margin-top-sm margin-bottom-0 padding-0"
                       style="background-color: unset; text-align: center;">
-                      Drop a zip file</h5>
-                    <div>or click to use standard uploader</div>
-                    <div>(File Size should not exceed 25MB)</div>
+                      {{viewWidgetVars.DROP_A_ZIP_FILE}}</h5>
+                    <div>{{viewWidgetVars.OR_CLICK_TO_USE_STD}}</div>
+                    <div>{{viewWidgetVars.FILE_SHOULD_NOT_EXCEED_LIMIT}}</div>
                   </div>
                   <button type="button" data-ng-show="uploadedFileFlag"
                     class="icon icon-edit btn btn-link margin-top-sm center-block"
@@ -279,7 +289,7 @@ Copyright end -->
             <cs-spinner></cs-spinner>
           </div>
         </form>
-        <div  id="submit-form-footer" class="width-100pt">
+        <div id="submit-form-footer" class="width-100pt">
           <div id="footer" class="position-relative">
             <div class="text-center submit-button-style">
               <button data-ng-click="submit()" data-ng-disabled="submitFormFlag"
@@ -290,10 +300,10 @@ Copyright end -->
                   </div>
                 </div>
                 <div class="display-inline margin-left-md">
-                  Submit Content 
+                  {{viewWidgetVars.SUBMIT_CONTENT}}
                 </div>
-                <i data-ng-if="!submitFormFlag" class="fa fa-long-arrow-right margin-right-md margin-top-3 padding-left-10"></i>
-
+                <i data-ng-if="!submitFormFlag"
+                  class="fa fa-long-arrow-right margin-right-md margin-top-3 padding-left-10"></i>
               </button>
             </div>
           </div>
@@ -301,37 +311,38 @@ Copyright end -->
       </div>
       <div id="step-3" data-ng-if="currentStep === 3">
         <div id="Thank You Image">
-          <div class="thank-you-image-div">
-            <img style="height:150px" src=" widgets/installed/submitContentForm-1.0.0/images/Thankyou.svg" alt="Community Submissions">
+          <div class="thank-you-image-div" >
+            <img style="height: 56px;" src=" widgets/installed/submitContentForm-1.0.0/images/Thankyou.svg"
+              alt="Community Submissions">
+            <div style="margin-top: 20px; font-size: 20px; font-weight: 600;"> Thank You For Your Submission</div>
           </div>
           <div style="position:relative; left:25px; top: 20px;">
-            What you can expect next
-            <p style=" color: #A3AAB7; width: 90%; display: block; font-size: 12px;" class="margin-top-md">
-              Thank you for your valuable contribution to the FortiSOAR community. To ensure a smooth process, we have
-              outlined the steps that will be taken once you submit your contribution:
+            {{viewWidgetVars.WHAT_TO_EXPECT_NEXT}}
+            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color">
+              {{viewWidgetVars.THANK_FOR_YOUR_VALUABLE_CONTRIBUTION}}
             </p>
             <ul class="styled-list">
-              <li>Upon submission of your solution, you will receive an email containing the Git repository details. If you
-                are
-                familiar with Git, you have the option to fork the repository and submit your contribution. Alternatively, if
-                Git is not within your comfort zone, we will proceed to submit the code on your behalf.
+              <li>
+                <div>{{viewWidgetVars.UPON_SUBMISSION}}</div>
               </li>
-              <li>After the Pull Request (PR) is raised, our team will diligently review it within a period of 2 weeks. </li>
-              <li>Upon successful merging of the PR, the solutions will be officially available on the FortiSOAR Content Hub.
+              <li>
+                <div>{{viewWidgetVars.AFTER_THE_PR_IS_RAISED}}</div>
               </li>
-              <li>Please note, this process may take approximately 2 weeks. The email address provided during submission will
-                be
-                used for all further communication, including the release of a solution. </li>
+              <li>
+                <div>{{viewWidgetVars.UPON_SUCCESSFUL_SUBMISSION}}</div>
+              </li>
+              <li>
+                <div>{{viewWidgetVars.PLEASE_NOTE_THIS_PROCESS_MAY_TAKE}}</div>
+              </li>
             </ul>
-            <p style=" color: #A3AAB7; width: 90%; display: block; font-size: 12px;" class="margin-top-md">
-              We appreciate your contribution and look forward to our collaborative efforts in enhancing our community. If you
-              have any questions or need further assistance, feel free to reach out to us at
+            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color">
+              {{viewWidgetVars.WE_APPRECIATE_YOUR_CONTRIBUTION}}
               <span style="color: #01a9b1;">fsr-integrations@fortinet.com</span>.
             </p>
           </div>
           <div class="next-page-close">
             <button id="breadcrumb-cancel" type="button" class="btn btn-sm btn-default margin-right-negative-2"
-              data-ng-click="cancel()"><i class="icon icon-close margin-right-sm"></i>Close
+              data-ng-click="cancel()"><i class="icon icon-close margin-right-sm"></i>{{viewWidgetVars.CLOSE}}
             </button>
           </div>
         </div>
