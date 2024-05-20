@@ -9,6 +9,8 @@
         "DROP_A_TGZ_FILE": "tgzファイルをドロップ",
         "DROP_A_ZIP_FILE": "zipファイルをドロップ",
         "EMAIL_ID": "メールID",
+        "FILE_SIZE_EXCEEDED": "ファイルが最大サイズを超えています。",
+        "FILE_SHOULD_NOT_EXCEED_LIMIT": "ファイルサイズは25MBを超えてはいけません",        
         "FORTISOAR_CONTENTHUB_INVITE_USERS": "FortiSOARコンテンツハブは、常に進化し続けるスイートで、事前に構築されたソリューションパック、さまざまなウィジェット、500以上のセキュリティ統合を含みます。コミュニティのユーザーには、FortiSOAR用のソリューションパック、ウィジェット、およびコネクタを積極的に作成していただくようお願いします。",
         "LETS_GET_STARTED": "始めましょう",
         "NAME": "名前",
@@ -33,6 +35,7 @@
         "UPON_SUBMISSION_EMAIL_TRIGGERED": "提出後、ユーザーが入力した情報と選択/アップロードしたソリューションがFortiSOAR統合専門家に電子メールでトリガーされます。",
         "UPLOAD_A_CUSTOM_FILE": "カスタムファイルをアップロード",
         "UPLOAD_CONTENT": "コンテンツをアップロード",
+        "UPLOAD_FAILED":"アップロードに失敗しました。もう一度やり直してください。",
         "WELCOME": "ようこそ",
         "WHAT_TO_EXPECT_NEXT": "次に何を期待するか",
         "WE_APPRECIATE_YOUR_CONTRIBUTION": "貴重な貢献に感謝し、コミュニティの強化に向けた共同作業を楽しみにしています。質問がある場合やさらなる支援が必要な場合は、お気軽にご連絡ください。"

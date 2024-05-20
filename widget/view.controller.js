@@ -87,6 +87,7 @@ Copyright end */
             "DROP_A_TGZ_FILE": widgetUtilityService.translate('submitYourContent.DROP_A_TGZ_FILE'),
             "DROP_A_ZIP_FILE": widgetUtilityService.translate('submitYourContent.DROP_A_ZIP_FILE'),
             "EMAIL_ID": widgetUtilityService.translate('submitYourContent.EMAIL_ID'),
+            "FILE_SIZE_EXCEEDED":widgetUtilityService.translate('submitYourContent.FILE_SIZE_EXCEEDED'),
             "FILE_SHOULD_NOT_EXCEED_LIMIT": widgetUtilityService.translate('submitYourContent.FILE_SHOULD_NOT_EXCEED_LIMIT'),
             "FORTISOAR_CONTENTHUB_INVITE_USERS": widgetUtilityService.translate('submitYourContent.FORTISOAR_CONTENTHUB_INVITE_USERS'),
             "LETS_GET_STARTED": widgetUtilityService.translate('submitYourContent.LETS_GET_STARTED'),
@@ -111,6 +112,7 @@ Copyright end */
             "UPON_SUCCESSFUL_SUBMISSION": widgetUtilityService.translate('submitYourContent.UPON_SUCCESSFUL_SUBMISSION'),
             "UPLOAD_A_CUSTOM_FILE": widgetUtilityService.translate('submitYourContent.UPLOAD_A_CUSTOM_FILE'),
             "UPLOAD_CONTENT": widgetUtilityService.translate('submitYourContent.UPLOAD_CONTENT'),
+            "UPLOAD_FAILED": widgetUtilityService.translate('submitYourContent.UPLOAD_FAILED'),
             "WELCOME": widgetUtilityService.translate('submitYourContent.WELCOME'),
             "WE_APPRECIATE_YOUR_CONTRIBUTION": widgetUtilityService.translate('submitYourContent.WE_APPRECIATE_YOUR_CONTRIBUTION'),
             "WHAT_TO_EXPECT_NEXT": widgetUtilityService.translate('submitYourContent.WHAT_TO_EXPECT_NEXT'),
@@ -148,9 +150,9 @@ Copyright end */
               if (response.status > 0) {
                 $log.debug(response.status + ': ' + response.data);
               }
-              var message = 'Upload failed. Please try again.';
+              var message = $scope.viewWidgetVars.UPLOAD_FAILED;
               if (response.status === 413) {
-                message = 'File exceeds the maximum size.';
+                message = $scope.viewWidgetVars.FILE_SIZE_EXCEEDED;
               }
               $scope.enableSpinner = false;
               toaster.error({ body: message });
@@ -159,7 +161,7 @@ Copyright end */
       }
       else {
         $scope.enableSpinner = false;
-        toaster.error({ body: 'File size exceeded limit, please try again' });
+        toaster.error({ body: $scope.viewWidgetVars.FILE_SIZE_EXCEEDED });
       }
     }
 

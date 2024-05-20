@@ -9,6 +9,8 @@
         "DROP_A_TGZ_FILE": "tgz 파일 드롭",
         "DROP_A_ZIP_FILE": "zip 파일 드롭",
         "EMAIL_ID": "이메일 ID",
+        "FILE_SIZE_EXCEEDED": "파일이 최대 크기를 초과했습니다.",
+        "FILE_SHOULD_NOT_EXCEED_LIMIT": "파일 크기는 25MB를 초과해서는 안 됩니다",
         "FORTISOAR_CONTENTHUB_INVITE_USERS": "FortiSOAR 콘텐츠 허브는 계속 발전하는 스위트입니다. 사전 제작된 솔루션 팩, 다양한 위젯 및 500 개 이상의 보안 통합을 포함합니다. 커뮤니티 사용자를 초대하여 FortiSOAR용 솔루션 팩, 위젯 및 커넥터를 적극적으로 만들어보십시오.",
         "LETS_GET_STARTED": "시작합시다",
         "NAME": "이름",
@@ -33,6 +35,7 @@
         "UPON_SUBMISSION_EMAIL_TRIGGERED": "제출 시, 사용자가 입력한 정보와 선택한/업로드한 솔루션이 포티SOAR 통합 전문가에게 전송됩니다.",
         "UPLOAD_A_CUSTOM_FILE": "사용자 지정 파일 업로드",
         "UPLOAD_CONTENT": "콘텐츠 업로드",
+        "UPLOAD_FAILED":"업로드에 실패했습니다. 다시 시도해 주세요.",
         "WELCOME": "환영합니다",
         "WHAT_TO_EXPECT_NEXT": "다음에 기대할 것",
         "WE_APPRECIATE_YOUR_CONTRIBUTION": "귀하의 기여에 감사드리며 우리의 커뮤니티 향상에 협력적인 노력을 기대합니다. 질문이 있거나 추가 지원이 필요한 경우 저희에게 연락하십시오."

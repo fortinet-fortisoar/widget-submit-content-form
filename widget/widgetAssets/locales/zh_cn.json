@@ -9,6 +9,8 @@
         "DROP_A_TGZ_FILE": "放置tgz文件",
         "DROP_A_ZIP_FILE": "放置zip文件",
         "EMAIL_ID": "电子邮件ID",
+        "FILE_SIZE_EXCEEDED": "文件超过最大尺寸。",
+        "FILE_SHOULD_NOT_EXCEED_LIMIT": "文件大小不应超过25MB",
         "FORTISOAR_CONTENTHUB_INVITE_USERS": "FortiSOAR内容中心是一个不断发展的套件，包括预构建的解决方案包、各种小部件和500多种安全集成。 我们邀请我们的社区用户积极参与，为FortiSOAR创建解决方案包、小部件和连接器。",
         "LETS_GET_STARTED": "让我们开始吧",
         "NAME": "名称",
@@ -33,6 +35,7 @@
         "UPON_SUBMISSION_EMAIL_TRIGGERED": "提交后，将触发电子邮件，其中包含用户填写的信息和选择/上传的解决方案，发送给FortiSOAR集成专家。",
         "UPLOAD_A_CUSTOM_FILE": "上传自定义文件",
         "UPLOAD_CONTENT": "上传内容",
+        "UPLOAD_FAILED":"上传失败。请再试一次。",
         "WELCOME": "欢迎",
         "WHAT_TO_EXPECT_NEXT": "接下来可以期待什么",
         "WE_APPRECIATE_YOUR_CONTRIBUTION": "我们感谢您的贡献，并期待我们共同努力增强我们的社区。 如果您有任何问题或需要进一步的帮助，请随时与我们联系。"

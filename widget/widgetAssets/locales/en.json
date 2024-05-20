@@ -35,6 +35,8 @@
         "UPON_SUCCESSFUL_SUBMISSION":"Upon successful merging of the PR, the solutions will be officially available on the FortiSOAR Content Hub.",
         "PLEASE_NOTE_THIS_PROCESS_MAY_TAKE":"Please note, this process may take approximately 2 weeks. The email address provided during submission will be used for all further communication, including the release of a solution.",
         "WE_APPRECIATE_YOUR_CONTRIBUTION":"We appreciate your contribution and look forward to our collaborative efforts in enhancing our community. If you have any questions or need further assistance, feel free to reach out to us at",
-        "CLOSE":"Close"
+        "CLOSE":"Close",
+        "UPLOAD_FAILED":"Upload failed. Please try again.",
+        "FILE_SIZE_EXCEEDED":"File exceeds the maximum size."
     }
 }
