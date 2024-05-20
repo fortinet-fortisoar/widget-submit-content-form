@@ -7,39 +7,42 @@ Copyright end -->
 
 <div class="widget-container chart submission-widget-container">
   <div id="body" class="display-flex-space-between">
-    <div class="content-navigation">
+    <div class="content-navigation" data-ng-class="{'content-navigation-white': isLightTheme }">
       <div>
-        <h3 class="font-size-14" style=" margin: 5px;">
+        <h3 class="font-size-20" style=" margin: 5px; margin-left: 0;">
           <img src="widgets/installed/submitContentForm-1.0.0/images/submitContentIcon.svg"
-            style="height: 18px; margin-right: 3px; margin-bottom: 2px" alt="Community Submissions">
+            style="height: 25px; margin-right: 3px; margin-bottom: 5px" alt="Community Submissions">
           {{viewWidgetVars.SUBMIT_YOUR_CONTENT}}
         </h3>
         <div class="note-style" id="upon-submission-of-email">
           {{viewWidgetVars.UPON_SUBMISSION_EMAIL_TRIGGERED}}</div>
       </div>
       <div id="static-image" style="text-align: right; margin-top: 20px;">
-        <img src="widgets/installed/submitContentForm-1.0.0/images/contentFiller.svg"
-          style="position: relative; left: 24px; height: 450px;">
+        <img data-ng-if="!isLightTheme" src="widgets/installed/submitContentForm-1.0.0/images/contentFiller.svg"
+          class="illustration-position">
+        <img data-ng-if="isLightTheme" src="widgets/installed/submitContentForm-1.0.0/images/contentFillerWhite.svg"
+          class="illustration-position">
       </div>
-      <div class="position-absolute" style="bottom: 30px; width: inherit;">
-        <h3 class="font-size-14 title-color" style="margin: 5px;">
+      <div class="position-absolute" style="bottom: 50px; width: inherit;">
+        <h3 class="font-size-14 title-color" style="margin: 5px;"  data-ng-class="{'title-color-white': isLightTheme }" >
           {{viewWidgetVars.COMPLETE_THESE_STEPS}}
         </h3>
         <div data-ng-click="moveToStep(1)" class="display-flex padding-md"
-          data-ng-class="{'current-step' : currentStep === 1}"  id="step--1">
+          data-ng-class="{'current-step' : currentStep === 1, 'current-step-white' : (isLightTheme && currentStep === 1)}"
+          id="step--1">
           <div style="padding-top: 4px;">
-            <div class="circle-outer-div-selected"  data-ng-class="{'circle-outer-div-selected-white' : currentStep === 1}"  >
+            <div class="circle-outer-div-selected" data-ng-class="{'circle-outer-div-selected-white' : isLightTheme}">
               <div class="circle-inner-div-selected" data-ng-if="currentStep == 1">
               </div>
-              <div class="font-size-11 icon icon-check-variant" data-ng-if="currentStep > 1">
+              <div class="font-size-11 icon icon-check-variant" data-ng-class="{'color-white': isLightTheme}" data-ng-if="currentStep > 1">
               </div>
             </div>
           </div>
           <div style="padding-left: 13px;" class="margin-left-md">
-            <div class="current-step-heading" >
+            <div class="current-step-heading" data-ng-class="{'step-heading-white': (currentStep > 1 && isLightTheme) }">
               {{viewWidgetVars.WELCOME}}
             </div>
-            <div class="current-step-subtitle">
+            <div class="current-step-subtitle" data-ng-class="{'step-heading-white': (currentStep > 1 && isLightTheme) }">
               {{viewWidgetVars.DETAILS_ABOUT_YOUR_SUBMISSION}}
             </div>
           </div>
@@ -47,38 +50,43 @@ Copyright end -->
             style="text-align: right;margin: auto 0 auto auto;"></span>
         </div>
         <div data-ng-click="moveToStep(2)" class="display-flex padding-md"
-          data-ng-class="{'current-step' : currentStep === 2}" id="step--2">
+          data-ng-class="{'current-step' : currentStep === 2, 'current-step-white' : (isLightTheme && currentStep === 2)}"
+          id="step--2">
           <div style="padding-top: 4px;">
             <div class="circle-outer-div" data-ng-if="currentStep === 1">
               <div class="circle-inner-div">
               </div>
             </div>
-            <div class="circle-outer-div-selected" data-ng-if="currentStep >= 2">
+            <div class="circle-outer-div-selected" data-ng-class="{'circle-outer-div-selected-white' : isLightTheme}"
+              data-ng-if="currentStep >= 2">
               <div class="circle-inner-div-selected" data-ng-if="currentStep == 2">
               </div>
-              <div class="font-size-11 icon icon-check-variant" data-ng-if="currentStep > 2">
+              <div class="font-size-11 icon icon-check-variant" data-ng-class="{'color-white': isLightTheme}" data-ng-if="currentStep > 2">
               </div>
             </div>
           </div>
           <div style="padding-left: 13px;" class="margin-left-md">
-            <div class="current-step-heading" data-ng-class="{'step-not-completed' : currentStep < 2}">
+            <div class="current-step-heading" data-ng-class="{'step-not-completed' : currentStep < 2, 'step-heading-white': (currentStep > 2 && isLightTheme) }">
               {{viewWidgetVars.CONTENT_FORM}}
             </div>
-            <div class="current-step-subtitle" data-ng-class="{'step-not-completed' : currentStep < 2}">
+            <div class="current-step-subtitle" data-ng-class="{'step-not-completed' : currentStep < 2, 'step-heading-white': (currentStep > 2 && isLightTheme) }">
               {{viewWidgetVars.PLEASE_PROVIDE_YOUR_DETAILS_AND_CONTENT_INFORMATION}}
             </div>
           </div>
           <span data-ng-if="currentStep == 2" class="fa fa-angle-right"
             style="text-align: right;margin: auto 0 auto auto;"></span>
         </div>
-        <div class="display-flex padding-md" data-ng-class="{'current-step' : currentStep === 3}" id="step--3">
+        <div class="display-flex padding-md"
+          data-ng-class="{'current-step' : currentStep === 3, 'current-step-white' : (isLightTheme && currentStep === 3)}"
+          id="step--3">
           <div style="padding-top: 4px;">
             <div data-ng-if="currentStep < 3" class="circle-outer-div">
               <div class="circle-inner-div">
               </div>
             </div>
-            <div class="circle-outer-div-selected" data-ng-if="currentStep == 3">
-              <div class="font-size-11 icon icon-check-variant">
+            <div class="circle-outer-div-selected" data-ng-class="{'circle-outer-div-selected-white' : isLightTheme}"
+              data-ng-if="currentStep == 3">
+              <div class="font-size-11 icon icon-check-variant" data-ng-class="{'color-white': isLightTheme}">
               </div>
             </div>
           </div>
@@ -95,10 +103,12 @@ Copyright end -->
         </div>
       </div>
     </div>
-    <div class="content-form">
+    <div class="content-form" data-ng-class="{'content-form-white': isLightTheme }">
       <div class="submit-content-form-header">
-        <p ng-click="openDocumentation()" style="margin-bottom: 0px;">?</p>
-        <span ng-click="minimize()" style="margin-bottom: 0px;">-</span>
+        <div class="header-icons-position">
+          <p ng-click="openDocumentation()" style="margin-bottom: 0px;" data-ng-class="{'background-black' : isLightTheme}">?</p>
+          <span ng-click="minimize()" style="margin-bottom: 0px;">-</span>
+        </div>
       </div>
       <hr class="header-divider">
 
@@ -108,7 +118,7 @@ Copyright end -->
         <div class="margin-top-lg" style="font-size: 18px; font-weight:500;">
           {{viewWidgetVars.SUBMIT_CONTENT}}
         </div>
-        <div class="content-form-text margin-top-lg">
+        <div class="content-form-text margin-top-lg" data-ng-class="{'content-form-text-white': isLightTheme }">
           {{viewWidgetVars.FORTISOAR_CONTENTHUB_INVITE_USERS}}
         </div>
         <div class="position-relative" style="top: 40px;">
@@ -125,39 +135,39 @@ Copyright end -->
         <form data-ng-submit="submit()" id="community-details-form" class="navigation-page-2"
           name="submitContentFormForm" data-ng-class="{'state-wait': processing }">
           <div id="body" class="margin-15">
-            <div class="font-size-14 title-color">
+            <div class="font-size-14 title-color" data-ng-class="{'title-color-white': isLightTheme }" >
               {{viewWidgetVars.SUBMITTER_DETAILS}}
             </div>
             <div id="submitter details">
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">{{viewWidgetVars.NAME}} <span
+                <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}" for="report-user-name">{{viewWidgetVars.NAME}} <span
                     class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.fullName.$invalid && submitContentFormForm.fullName.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
+                  <input data-ng-class="{'input-background-white': isLightTheme}" data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
                     ng-model="user.fullName" name="fullName" required>
                 </div>
               </div>
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA" for="report-user-name">{{viewWidgetVars.EMAIL_ID}}
+                <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}" for="report-user-name">{{viewWidgetVars.EMAIL_ID}}
                   <span class="text-danger">*</span>
                 </label>
                 <i class="icon icon-information font-Size-13"></i>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.email.$invalid && submitContentFormForm.email.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="email" id="emails"
+                  <input data-ng-class="{'input-background-white': isLightTheme}" data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="email" id="emails"
                     ng-model="user.emailId" name="email" required multiple>
                 </div>
               </div>
               <div class="margin-bottom-md">
-                <label class="font-size-12" style="color:#D2D5DA"
+                <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
                   for="report-user-name">{{viewWidgetVars.ORGANIZATION_NAME}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.organizationName.$invalid && submitContentFormForm.organizationName.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
+                  <input data-ng-class="{'input-background-white': isLightTheme}" data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
                     ng-model="user.organizationName" name="organizationName" required>
                 </div>
               </div>
@@ -170,12 +180,12 @@ Copyright end -->
             </div>
             <div id="solution Details">
               <div class="margin-bottom-md" id="solution-title">
-                <label class="font-size-12" style="color:#D2D5DA"
+                <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
                   for="report-user-name">{{viewWidgetVars.SOLUTION_TITLE}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionTitle.$invalid && submitContentFormForm.solutionTitle.$touched }"
                   class="display-flex">
-                  <input data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
+                  <input data-ng-class="{'input-background-white': isLightTheme}"  data-ng-disabled="submitFormFlag" class="form-control border-radius-5" type="text"
                     ng-model="user.solutionTitle" name="solutionTitle" required>
                 </div>
               </div>
@@ -185,7 +195,7 @@ Copyright end -->
                   class="control-label font-size-12">{{viewWidgetVars.SOLUTION_CATEGORY}}
                 </label>
                 <span class="text-danger">*</span>
-                <select name="solutionCategory" id="solutionCategory" class="form-control"
+                <select data-ng-class="{'input-background-white': isLightTheme}"  name="solutionCategory" id="solutionCategory" class="form-control border-radius-5 "
                   data-ng-disabled="submitFormFlag" data-ng-model="selectedCategory.name"
                   data-ng-change="selectedCategoryChanged()" required>
                   <option value="">{{viewWidgetVars.SELECT_AN_OPTION}}</option>
@@ -194,7 +204,7 @@ Copyright end -->
 
               </div>
               <div class="margin-bottom-md" id="solution-details">
-                <label class="font-size-12" style="color:#D2D5DA"
+                <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
                   for="report-user-name">{{viewWidgetVars.SOLUTION_DETAILS}}<span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionDetails.$invalid && submitContentFormForm.solutionDetails.$touched }"
@@ -230,7 +240,7 @@ Copyright end -->
                   <label id="field-for-data-source" class="control-label">{{viewWidgetVars.SELECT_SOLUTION}}
                     <span class="text-danger">*</span>
                   </label>
-                  <select data-ng-disabled="submitFormFlag" class="form-control" name="selectSolution"
+                  <select data-ng-class="{'input-background-white': isLightTheme}" data-ng-disabled="submitFormFlag" class="form-control border-radius-5 " name="selectSolution"
                     data-ng-model="selectedSolution.selectedSolution" required>
                     <option value="">{{viewWidgetVars.SELECT_AN_OPTION}}</option>
                     <option ng-repeat="content in createdContent" value={{content}}>{{content.label + ' - ' +
@@ -243,7 +253,7 @@ Copyright end -->
               <div id="upload-a-file" class="margin-top-md"
                 data-ng-show="!loadingJob && showCreatedSolutions == 'custom'">
                 <div data-ng-show="selectedCategory.name === 'Widget' || selectedCategory.name === 'Connector'">
-                  <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
+                  <span class="font-size-12 margin-top-md" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}">
                   </span>
                   <div class="file-upload margin-top-6" data-ng-model="uploadedFile"
                     ngf-select="uploadFiles(uploadedFile)" data-ngf-drop="uploadFiles(uploadedFile)"
@@ -290,7 +300,7 @@ Copyright end -->
           </div>
         </form>
         <div id="submit-form-footer" class="width-100pt">
-          <div id="footer" class="position-relative">
+          <div id="footer" style="bottom: 5px;" class="position-relative">
             <div class="text-center submit-button-style">
               <button data-ng-click="submit()" data-ng-disabled="submitFormFlag"
                 class="btn btn-primary btn-sm margin-right-md display-flex">
@@ -311,31 +321,33 @@ Copyright end -->
       </div>
       <div id="step-3" data-ng-if="currentStep === 3">
         <div id="Thank You Image">
-          <div class="thank-you-image-div" >
-            <img style="height: 56px;" src=" widgets/installed/submitContentForm-1.0.0/images/Thankyou.svg"
+          <div class="thank-you-image-div">
+            <img data-ng-if="!isLightTheme" style="height: 56px;" src=" widgets/installed/submitContentForm-1.0.0/images/Thankyou.svg"
+              alt="Community Submissions">
+              <img data-ng-if="isLightTheme" style="height: 56px;" src=" widgets/installed/submitContentForm-1.0.0/images/ThankyouWhite.svg"
               alt="Community Submissions">
             <div style="margin-top: 20px; font-size: 20px; font-weight: 600;"> Thank You For Your Submission</div>
           </div>
           <div style="position:relative; left:25px; top: 20px;">
             {{viewWidgetVars.WHAT_TO_EXPECT_NEXT}}
-            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color">
+            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color"  data-ng-class="{'title-color-white': isLightTheme }" >
               {{viewWidgetVars.THANK_FOR_YOUR_VALUABLE_CONTRIBUTION}}
             </p>
             <ul class="styled-list">
               <li>
-                <div>{{viewWidgetVars.UPON_SUBMISSION}}</div>
+                <div data-ng-class="{'label-color-white': isLightTheme}">{{viewWidgetVars.UPON_SUBMISSION}}</div>
               </li>
               <li>
-                <div>{{viewWidgetVars.AFTER_THE_PR_IS_RAISED}}</div>
+                <div data-ng-class="{'label-color-white': isLightTheme}">{{viewWidgetVars.AFTER_THE_PR_IS_RAISED}}</div>
               </li>
               <li>
-                <div>{{viewWidgetVars.UPON_SUCCESSFUL_SUBMISSION}}</div>
+                <div data-ng-class="{'label-color-white': isLightTheme}">{{viewWidgetVars.UPON_SUCCESSFUL_SUBMISSION}}</div>
               </li>
               <li>
-                <div>{{viewWidgetVars.PLEASE_NOTE_THIS_PROCESS_MAY_TAKE}}</div>
+                <div data-ng-class="{'label-color-white': isLightTheme}">{{viewWidgetVars.PLEASE_NOTE_THIS_PROCESS_MAY_TAKE}}</div>
               </li>
             </ul>
-            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color">
+            <p style=" width: 90%; display: block; font-size: 12px;" class="margin-top-md title-color"  data-ng-class="{'title-color-white': isLightTheme }" >
               {{viewWidgetVars.WE_APPRECIATE_YOUR_CONTRIBUTION}}
               <span style="color: #01a9b1;">fsr-integrations@fortinet.com</span>.
             </p>

@@ -152,7 +152,7 @@ Copyright end
   height: 100vh;
 }
 
-.content-form{
+.content-form-white{
   background: white !important;
 }
 
@@ -215,11 +215,11 @@ Copyright end
 }
 
 .current-step-white{
-  background: #7BAAF3;
+  background: #7BAAF3 !important;
 }
 
 .note-style {
-  font-size: 12px;
+  font-size: 13px;
   font-style: italic;
   color: #768092;
   padding-top: 10px;
@@ -236,6 +236,10 @@ Copyright end
   color: #F7F8F9;
   font-size: 13px;
   font-weight: 600;
+}
+
+.step-heading-white {
+  color:#48556F
 }
 
 .submission-widget-container {
@@ -260,9 +264,38 @@ Copyright end
   color: #A3AAB7
 }
 .title-color-white {
-  color: #172B4D
+  color: #172B4D !important;
 }
 
 .border-radius-5 {
   border-radius: 5px;
+}
+
+.color-white{
+  color: white !important;
+}
+
+.label-color-white{
+  color: #48556F !important;
+}
+
+.input-background-white{
+  background: #F7F8F9 !important; 
+}
+
+.header-icons-position{
+  top: 10px;
+  display: flex;
+  position: relative;
+}
+
+.background-black{
+  background: black;
+}
+
+.illustration-position{
+  position: relative;
+  left: 24px;
+  height: 450px;
+  top: 40px;
 }

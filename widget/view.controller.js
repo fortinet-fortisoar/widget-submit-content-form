@@ -8,8 +8,8 @@ Copyright end */
     .module('cybersponse')
     .controller('submitContentForm100Ctrl', submitContentForm100Ctrl);
 
-  submitContentForm100Ctrl.$inject = ['$scope', 'Upload', 'API', 'toaster', 'submitContentFormService', 'widgetUtilityService'];
-  function submitContentForm100Ctrl($scope, Upload, API, toaster, submitContentFormService, widgetUtilityService) {
+  submitContentForm100Ctrl.$inject = ['$scope', 'Upload', 'API', 'toaster', 'submitContentFormService', 'widgetUtilityService', '$rootScope', '$window'];
+  function submitContentForm100Ctrl($scope, Upload, API, toaster, submitContentFormService, widgetUtilityService, $rootScope, $window) {
 
     $scope.category = [{ name: 'Connector', type: 'connector' }, { name: 'Solution Pack', type: 'solutionpack' }, { name: 'Widget', type: 'widget' }]
     $scope.user = {
@@ -48,6 +48,7 @@ Copyright end */
       ]
     };
     $scope.moveToStep = moveToStep;
+    $scope.openDocumentation = openDocumentation;
 
     $scope.showCreatedSolutions = 'created';
     $scope.currentStep = 1;
@@ -160,6 +161,10 @@ Copyright end */
         $scope.enableSpinner = false;
         toaster.error({ body: 'File size exceeded limit, please try again' });
       }
+    }
+
+    function openDocumentation(){
+      $window.open('https://github.com/fortinet-fortisoar/widget-submit-content-form/blob/release/1.0.0/docs/usage.md#prompting-tips', '_blank');
     }
 
     function minimize() {
