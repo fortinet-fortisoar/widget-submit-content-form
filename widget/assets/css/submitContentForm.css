@@ -79,7 +79,7 @@ Copyright end
 }
 
 .styled-list {
-  font-size: 12px;
+  font-size: 14px;
   color: #A3AAB7;
   width: 90%;
   list-style-type: none;
@@ -88,6 +88,7 @@ Copyright end
 
 .styled-list li {
   padding-left: 20px;
+  margin-bottom: -15px;
 }
 
 .styled-list li:before {
@@ -221,7 +222,7 @@ Copyright end
 .note-style {
   font-size: 13px;
   font-style: italic;
-  color: #768092;
+  color: #A3AAB7;
   padding-top: 10px;
 }
 
