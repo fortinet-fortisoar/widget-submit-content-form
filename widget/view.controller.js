@@ -52,7 +52,6 @@ Copyright end */
 
     $scope.showCreatedSolutions = 'created';
     $scope.currentStep = 1;
-    // $scope.letsGetStarted = letsGetStarted;
     const maxFileSize = 25072682;
 
     init();
