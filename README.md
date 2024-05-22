@@ -13,8 +13,8 @@
 
 ## Overview
 
-The Community Submission Widget is a user-friendly interface designed for community members to share their solutions. 
-The Community Submission Widget is part of the larger Community Submissions Solution pack, which includes associated playbooks for email. This integration streamlines the submission process and ensures efficient handling of submitted solutions.
+The Submit Content Form Widget is a user-friendly interface designed for community members to share their solutions. 
+The Submit Content Form Widget is part of the larger Submit Your Content Solution pack, which includes associated playbooks for email. This integration streamlines the submission process and ensures efficient handling of submitted solutions.
 
 ## Next Steps
 

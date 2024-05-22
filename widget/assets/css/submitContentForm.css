@@ -1,0 +1,280 @@
+/*
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end 
+*/
+
+
+.submit-button-style {
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.submit-content-form-header {
+  display: flex;
+  justify-content: end;
+}
+
+.submit-content-form-header p {
+  text-align: center;
+  width: 20px;
+  font-size: 14px;
+  height: 20px;
+  border: 1px solid;
+  border-radius: 50%;
+  color: white;
+  margin-bottom: 0px;
+  position: relative;
+  margin-right: 16px;
+}
+
+.header-divider {
+  margin: 0px;
+}
+
+.submit-content-form-header span {
+  margin-right: 30px;
+  font-size: 32px;
+  transform: scale(1.5, 0.5);
+  position: relative;
+  bottom: 11px;
+}
+
+.community-form-overflow {
+  height: calc(100vh);
+  padding: 18px;
+}
+
+.next-page-close {
+  position: relative;
+  right: 13px;
+  text-align: center;
+  top: 20px;
+}
+
+.styled-list {
+  font-size: 14px;
+  color: #A3AAB7;
+  width: 90%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.styled-list li {
+  padding-left: 20px;
+  margin-bottom: -15px;
+}
+
+.styled-list li:before {
+  content: "\2022";
+  position: relative;
+  color: #169CAD;
+  font-size: 18px;
+  display: inline-block;
+  width: 1em;
+  z-index: 1;
+  margin-left: -1em;
+}
+
+.styled-list li div{
+  position: relative;
+  bottom: 19px;
+}
+
+.custom-loader {
+  background: #7fffd400;
+  margin: 0px;
+  width: 29px;
+}
+
+.custom-cs-spinner {
+  height: 19px;
+  width: 19px;
+  animation: spinner 0.8s infinite linear;
+  border: 3px solid #e9e9e9;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+
+.content-navigation {
+  width: 37%;
+  padding: 22px;
+  background: #1A202A;
+}
+
+.content-navigation-white{
+  background: #F8FAFC !important;
+}
+
+.navigation-page-1 {
+  position: relative;
+  width: 52%;
+  text-align: center;
+  top: 20%;
+  left: 20%;
+}
+
+.navigation-page-2 {
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+}
+
+.content-form {
+  margin-left: 0px;
+  background: #1C2531;
+  width: 63%;
+  height: 100vh;
+}
+
+.content-form-white{
+  background: white !important;
+}
+
+.content-form-text {
+  font-size: 14px;
+  color: #A3AAB7;
+}
+
+.content-form-text-white{
+  color: #48556F;
+}
+
+.circle-outer-div {
+  border: 1px solid #758195;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-inner-div {
+  border: 1px solid #758195;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #758195;
+}
+
+.circle-outer-div-selected {
+  border: 1px solid #169CAD;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #169CAD;
+}
+
+.circle-outer-div-selected-white{
+  background: #4676B2 !important;
+}
+
+.circle-inner-div-selected {
+  border: 1px solid #E0F8FC;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #E0F8FC;
+}
+
+.current-step {
+  background: #141B22;
+  display: flex;
+  width: 88%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.current-step-white{
+  background: #7BAAF3 !important;
+}
+
+.note-style {
+  font-size: 14px;
+  font-style: italic;
+  color: #A3AAB7;
+  padding-top: 10px;
+}
+
+.current-step-subtitle {
+  font-size: 12px;
+  color: #D2D5DA;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.current-step-heading {
+  color: #F7F8F9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-heading-white {
+  color:#48556F
+}
+
+.submission-widget-container {
+  background-color: #1A202A;
+  width: 160%;
+  position: absolute;
+  right: -2px;
+  top: -33px;
+}
+
+.thank-you-image-div {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.step-not-completed {
+  color: #768092 !important;
+}
+
+.title-color {
+  color: #A3AAB7
+}
+.title-color-white {
+  color: #172B4D !important;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.color-white{
+  color: white !important;
+}
+
+.label-color-white{
+  color: #48556F !important;
+}
+
+.input-background-white{
+  background: #F7F8F9 !important; 
+}
+
+.header-icons-position{
+  top: 10px;
+  display: flex;
+  position: relative;
+}
+
+.background-black{
+  background: black;
+}
+
+.illustration-position{
+  position: relative;
+  left: 24px;
+  height: 450px;
+  top: 40px;
+}

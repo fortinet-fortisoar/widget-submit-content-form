@@ -6,11 +6,11 @@ Copyright end */
   (function () {
       angular
           .module('cybersponse')
-          .controller('editCommunitySubmission100Ctrl', editCommunitySubmission100Ctrl);
+          .controller('editSubmitContentForm100Ctrl', editSubmitContentForm100Ctrl);
   
-      editCommunitySubmission100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config'];
+      editSubmitContentForm100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config'];
   
-      function editCommunitySubmission100Ctrl($scope, $uibModalInstance, config) {
+      function editSubmitContentForm100Ctrl($scope, $uibModalInstance, config) {
           $scope.cancel = cancel;
           $scope.save = save;
           $scope.config = config;
