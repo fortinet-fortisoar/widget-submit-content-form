@@ -162,16 +162,19 @@ Copyright end */
                                     }
                                     else {
                                         toaster.error({ body: 'Playbook failed please try again' });
+                                        scope.submitFormFlag = false;
                                         defer.reject('Playbook failed');
                                     }
                                 }, function (err) {
                                     toaster.error({ body: 'Playbook failed please try again' });
+                                    scope.submitFormFlag = false;
                                     defer.reject(err);
                                     scope.playbookError = true;
                                 });
                             }
                         }, function (error) {
                             toaster.error({ body: 'Playbook failed please try again' });
+                            scope.submitFormFlag = false;
                             defer.reject(error);
                             scope.playbookError = true;
                         }, scope);
