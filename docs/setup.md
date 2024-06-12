@@ -13,7 +13,7 @@
 
 # Configuration
 
-The widget is a part of **Submit Your Content** solution pack and does not require any standalone configuration.
+The widget is a part of [**Submit Your Content**](https://github.com/fortinet-fortisoar/solution-pack-submit-your-content) solution pack and does not require any standalone configuration.
 
 | [Usage](./usage.md) |
 |---------------------|
