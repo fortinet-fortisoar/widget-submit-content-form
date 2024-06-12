@@ -5,14 +5,15 @@
 
 1. To install a widget, click **Content Hub** > **Discover**.
 
-2. From the list of widget that appears, search **Submit Content Form**.
+2. From the list of widgets that appears, search **Submit Content Form**.
+
 3. Click the **Submit Content Form** widget.
 
-4. Click **Install** on the bottom to begin installation.
+4. Click **Install** on the lower part of the screen to begin installation.
 
 # Configuration
 
-[This] (https://github.com/fortinet-fortisoar/solution-pack-community-submissions/blob/develop/doc/setup.md#configuration) guide provides an approach to choose the medium to send email. Eg. using exchange or the normal SMTP route.
+The widget is a part of [**Submit Your Content**](https://github.com/fortinet-fortisoar/solution-pack-submit-your-content) solution pack and does not require any standalone configuration.
 
 | [Usage](./usage.md) |
 |---------------------|
