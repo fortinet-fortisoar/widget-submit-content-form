@@ -37,6 +37,7 @@
         "WE_APPRECIATE_YOUR_CONTRIBUTION":"We appreciate your contribution and look forward to our collaborative efforts in enhancing our community. If you have any questions or need further assistance, feel free to reach out to us at",
         "CLOSE":"Close",
         "UPLOAD_FAILED":"Upload failed. Please try again.",
-        "FILE_SIZE_EXCEEDED":"File exceeds the maximum size."
+        "FILE_SIZE_EXCEEDED":"File exceeds the maximum size.",
+        "The_SUBMIT_YOUR_CONTENT_EMPOWERS_COMMUNITY": "The Submit Your Content empowers community members to seamlessly submit their solutions using this form that captures mandatory details about the solution pack, widget, or connector. By collecting all necessary information upfront, it helps to eliminates the need for back-and-forth communication between the integration team and content creators."
     }
 }

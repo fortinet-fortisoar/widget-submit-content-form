@@ -121,6 +121,9 @@ Copyright end -->
         <div class="content-form-text margin-top-lg" data-ng-class="{'content-form-text-white': isLightTheme }">
           {{viewWidgetVars.FORTISOAR_CONTENTHUB_INVITE_USERS}}
         </div>
+        <div class="content-form-text margin-top-lg" data-ng-class="{'content-form-text-white': isLightTheme }">
+          {{viewWidgetVars.The_SUBMIT_YOUR_CONTENT_EMPOWERS_COMMUNITY}}
+        </div>
         <div class="position-relative" style="top: 40px;">
           <button data-ng-click="moveToStep(2)" class="btn btn-primary btn-sm margin-right-md margin-top-lg">
             <div class="display-inline margin-left-md">
@@ -163,7 +166,7 @@ Copyright end -->
               </div>
               <div class="margin-bottom-md">
                 <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
-                  for="report-user-name">{{viewWidgetVars.ORGANIZATION_NAME}}<span class="text-danger">*</span></label>
+                  for="report-user-name">{{viewWidgetVars.ORGANIZATION_NAME}} <span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.organizationName.$invalid && submitContentFormForm.organizationName.$touched }"
                   class="display-flex">
@@ -181,7 +184,7 @@ Copyright end -->
             <div id="solution Details">
               <div class="margin-bottom-md" id="solution-title">
                 <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
-                  for="report-user-name">{{viewWidgetVars.SOLUTION_TITLE}}<span class="text-danger">*</span></label>
+                  for="report-user-name">{{viewWidgetVars.SOLUTION_TITLE}} <span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionTitle.$invalid && submitContentFormForm.solutionTitle.$touched }"
                   class="display-flex">
@@ -194,7 +197,7 @@ Copyright end -->
                 <label id="field-for-data-source"
                   class="control-label font-size-12">{{viewWidgetVars.SOLUTION_CATEGORY}}
                 </label>
-                <span class="text-danger">*</span>
+                <span class="text-danger font-size-12">*</span>
                 <select data-ng-class="{'input-background-white': isLightTheme}"  name="solutionCategory" id="solutionCategory" class="form-control border-radius-5 "
                   data-ng-disabled="submitFormFlag" data-ng-model="selectedCategory.name"
                   data-ng-change="selectedCategoryChanged()" required>
@@ -205,7 +208,7 @@ Copyright end -->
               </div>
               <div class="margin-bottom-md" id="solution-details">
                 <label class="font-size-12" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}"
-                  for="report-user-name">{{viewWidgetVars.SOLUTION_DETAILS}}<span class="text-danger">*</span></label>
+                  for="report-user-name">{{viewWidgetVars.SOLUTION_DETAILS}} <span class="text-danger">*</span></label>
                 <div
                   data-ng-class="{ 'has-error': submitContentFormForm.solutionDetails.$invalid && submitContentFormForm.solutionDetails.$touched }"
                   class="display-flex">
@@ -255,7 +258,7 @@ Copyright end -->
                 <div data-ng-show="selectedCategory.name === 'Widget' || selectedCategory.name === 'Connector'">
                   <span class="font-size-12 margin-top-md" style="color:#D2D5DA" data-ng-class="{'label-color-white': isLightTheme}">
                   </span>
-                  <div class="file-upload margin-top-6" data-ng-model="uploadedFile"
+                  <div class="file-upload margin-top-6" data-ng-model="uploadedFile" name="uploadFileDiv"
                     ngf-select="uploadFiles(uploadedFile)" data-ngf-drop="uploadFiles(uploadedFile)"
                     data-ng-show="!uploadedFileFlag" data-accept=".tgz" data-ngf-pattern="'.zip,.tgz,.json'">
                     <h2 class="margin-0">
@@ -274,7 +277,7 @@ Copyright end -->
                 <div data-ng-show="selectedCategory.name === 'Solution Pack'">
                   <span class="font-size-12 margin-top-md" style="color:#D2D5DA">
                   </span>
-                  <div class="file-upload margin-top-6" data-ng-model="uploadedFile"
+                  <div class="file-upload margin-top-6" data-ng-model="uploadedFile"  name="uploadFileDiv"
                     ngf-select="uploadFiles(uploadedFile)" data-ngf-drop="uploadFiles(uploadedFile)"
                     data-ng-show="!uploadedFileFlag" data-accept=".zip" data-ngf-pattern="'.zip,.tgz,.json'">
                     <h2 class="margin-top-sm margin-bottom-0">
