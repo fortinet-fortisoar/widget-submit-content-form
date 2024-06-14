@@ -34,7 +34,7 @@ Copyright end */
     $scope.selectedCategoryChanged = selectedCategoryChanged;
     $scope.uploadFiles = uploadFiles;
     $scope.fileName = '';
-    $scope.uploadedFileFlag = null;
+    $scope.uploadedFileFlag = false;
     $scope.submit = submit;
     $scope.cancel = cancel;
     $scope.markdownConfig = {
@@ -63,7 +63,7 @@ Copyright end */
     }
 
     function selectedCategoryChanged() {
-      $scope.uploadedFileFlag = null;
+      $scope.uploadedFileFlag = false;
       $scope.selectedSolution.selectedSolution = null;
       if ($scope.fileMetadata && $scope.fileMetadata.id) {
         submitContentFormService.deleteFile(angular.copy($scope.fileMetadata.id));
@@ -86,7 +86,7 @@ Copyright end */
             "DROP_A_TGZ_FILE": widgetUtilityService.translate('submitYourContent.DROP_A_TGZ_FILE'),
             "DROP_A_ZIP_FILE": widgetUtilityService.translate('submitYourContent.DROP_A_ZIP_FILE'),
             "EMAIL_ID": widgetUtilityService.translate('submitYourContent.EMAIL_ID'),
-            "FILE_SIZE_EXCEEDED":widgetUtilityService.translate('submitYourContent.FILE_SIZE_EXCEEDED'),
+            "FILE_SIZE_EXCEEDED": widgetUtilityService.translate('submitYourContent.FILE_SIZE_EXCEEDED'),
             "FILE_SHOULD_NOT_EXCEED_LIMIT": widgetUtilityService.translate('submitYourContent.FILE_SHOULD_NOT_EXCEED_LIMIT'),
             "FORTISOAR_CONTENTHUB_INVITE_USERS": widgetUtilityService.translate('submitYourContent.FORTISOAR_CONTENTHUB_INVITE_USERS'),
             "LETS_GET_STARTED": widgetUtilityService.translate('submitYourContent.LETS_GET_STARTED'),
@@ -112,6 +112,7 @@ Copyright end */
             "UPLOAD_A_CUSTOM_FILE": widgetUtilityService.translate('submitYourContent.UPLOAD_A_CUSTOM_FILE'),
             "UPLOAD_CONTENT": widgetUtilityService.translate('submitYourContent.UPLOAD_CONTENT'),
             "UPLOAD_FAILED": widgetUtilityService.translate('submitYourContent.UPLOAD_FAILED'),
+            "The_SUBMIT_YOUR_CONTENT_EMPOWERS_COMMUNITY": widgetUtilityService.translate('submitYourContent.The_SUBMIT_YOUR_CONTENT_EMPOWERS_COMMUNITY'),
             "WELCOME": widgetUtilityService.translate('submitYourContent.WELCOME'),
             "WE_APPRECIATE_YOUR_CONTRIBUTION": widgetUtilityService.translate('submitYourContent.WE_APPRECIATE_YOUR_CONTRIBUTION'),
             "WHAT_TO_EXPECT_NEXT": widgetUtilityService.translate('submitYourContent.WHAT_TO_EXPECT_NEXT'),
@@ -164,7 +165,7 @@ Copyright end */
       }
     }
 
-    function openDocumentation(){
+    function openDocumentation() {
       $window.open('https://github.com/fortinet-fortisoar/widget-submit-content-form/blob/release/1.0.0/docs/usage.md#prompting-tips', '_blank');
     }
 
@@ -192,7 +193,7 @@ Copyright end */
       $scope.user = {
         solutionTitle: ''
       };
-      $scope.uploadedFileFlag = null;
+      $scope.uploadedFileFlag = false;
       $scope.selectedSolution.selectedSolution = '';
       $scope.currentStep = 1;
       const customModal = document.getElementById('custom-modal');
@@ -208,6 +209,17 @@ Copyright end */
         $scope.submitContentFormForm.$focusOnFirstError();
         return;
       }
+      // to check if file is uploaded
+      if (!($scope.showCreatedSolutions === 'created') && !$scope.uploadedFileFlag) {
+        var uploadFileDiv = document.getElementsByName('uploadFileDiv');
+        for (var i = 0; i < uploadFileDiv.length; i++) {
+          uploadFileDiv[i].setAttribute('style', 'border: 2px dashed #da393d;');
+        }
+        var container = document.getElementById('community-details-form');
+        container.scrollTop = container.scrollHeight;
+        return;
+      }
+
       $scope.submitFormFlag = true;
       if ($scope.showCreatedSolutions === 'created') {
         $scope.selectedSolution.selectedSolution = JSON.parse($scope.selectedSolution.selectedSolution);
