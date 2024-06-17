@@ -15,8 +15,7 @@
             "7.4.3"
         ],
         "snapshots": [
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/submitContentForm-1.0.0/images/uploadCustom.png",
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/submitContentForm-1.0.0/images/fromFsr.png"
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/submitContentForm-1.0.0/images/content-form.png"
         ],
         "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJiSURBVHgB7ViLTcMwEL0iBsgIHqFMQEZoN8gG7QYNE6RMkDJB2aBskDKBs0G7wWErjnS52ImdWBCkPskqcL/nu/NhF+CBBQARE7UkNpCwNChSAgkgIp5g4fifBFWVUrUy8MfdLI0aAqDi7IJiKeUNaadDgF1iejEJsDmQWHtfozN24UWSEBSe+gcWp/Sxa0+kZMZrh+7GbOiGfVRqFTbCpoUoJHpuzEayZ2yISfRHSX1gk+1qEjlGMreQK3AapN4YI5nhSM+uIIy07pPMIvpS6xuaE6wDCrVezSdHtlqtPiA2HJkrh8pjMiQtdinEhAnEkXna6lKeLeX2Hkc+QSQL4Dezuj4uzEcOMYD9kVB66KUWuT50dBzdomTR9BmFILLEEONlLA2hNSWBzVTAoY3YCOxM+ttVMHlFHF6YzGfkFER/zWRHi79Lh4vDqSBGFDlzKIlMl+yo1gm7pZTM5mbbMLI7ZQtu0CJxENyzYMImw24pxcCm5BjBZyXbQneg3tUgvUM4aMP72tftDypmrfhsmZ961APLMO8Zmg2tV2LTR0MlprjAXGB3fvFgRxzHkeinLtkcgnvmNCUyPV70ydT9cyI6ZyPTtx7az6XL1xyCCStZ5dAbG9QZIxfveYr9UhaB9rZLcAaxgN2HOS2j8LBNLbYVxAY2vcZnpnRlwmStxD4kTrlBzyCJDt08Brmgh7saplf18QKBb1+DT22rB3KIUfA3CybAG4Tjfcp/qMV/9fEMEYD2mRblSj+VYM1+Fx76V/hNOE6pDTeMOZQDSaYj5CTGfL1NJJmj/dKr/7aBB/4YP6FNNnCg9fjpAAAAAElFTkSuQmCC",
         "contexts": [
